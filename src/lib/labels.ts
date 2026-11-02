@@ -247,6 +247,14 @@ export const labels = {
 		notConfigured: 'Les rappels ne sont pas encore configurés sur le serveur (clés VAPID).'
 	},
 
+	queue: {
+		waiting: 'En attente du réseau',
+		offline: 'Pas de réseau. Je peux lire ; mes cases cochées partiront au retour du réseau.',
+		count: (n: number) => `${n} en attente.`,
+		sending: (n: number) => `Envoi de ${n} action${n > 1 ? 's' : ''} en attente…`,
+		dismiss: 'Compris'
+	},
+
 	login: {
 		title: 'Connexion',
 		password: 'Mot de passe',

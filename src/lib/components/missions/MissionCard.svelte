@@ -5,8 +5,8 @@
 	import { labels } from '$lib/labels';
 	import type { MissionView } from '$lib/server/mission-view';
 
-	type Props = { mission: MissionView; ontoggle?: (m: MissionView) => void; gained?: number | null };
-	let { mission: m, ontoggle, gained = null }: Props = $props();
+	type Props = { mission: MissionView; ontoggle?: (m: MissionView) => void; gained?: number | null; waiting?: boolean };
+	let { mission: m, ontoggle, gained = null, waiting = false }: Props = $props();
 </script>
 
 <li class="mission" class:done={m.done} class:dropped={m.status === 'dropped'}>
@@ -28,6 +28,7 @@
 			<span class="meta test"><FlaskConical size={14} /> {labels.missions.review(m.reviewLabel)}</span>
 		{/if}
 		{#if m.testReview}<span class="meta question">{labels.today.testQuestion}</span>{/if}
+		{#if waiting}<span class="meta waiting">{labels.queue.waiting}</span>{/if}
 	</a>
 	{#if gained}<span class="gain" aria-live="polite">+{gained}</span>{/if}
 </li>
@@ -73,6 +74,10 @@
 		align-items: center;
 		gap: 6px;
 		color: var(--parch-soft);
+	}
+	.waiting {
+		color: var(--gold);
+		font-style: italic;
 	}
 	.gain {
 		color: var(--gold-bright);

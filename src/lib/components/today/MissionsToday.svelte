@@ -2,6 +2,7 @@
 	import Checkbox from '$lib/components/Checkbox.svelte';
 	import RankBadge from '$lib/components/RankBadge.svelte';
 	import { api } from '$lib/client/api';
+	import { queue } from '$lib/client/queue.svelte';
 	import { labels } from '$lib/labels';
 	import { RANK_ORDER, XP_BY_RANK } from '$lib/rules';
 	import type { TodayData, TodayMission } from '$lib/server/today';
@@ -20,12 +21,21 @@
 	let newTitle = $state('');
 	let newRank = $state<TodayMission['rank']>('D');
 
+	const key = (id: number) => `mission-${id}`;
+	// A tick waiting in the offline queue is shown as such.
+	const isDone = (m: TodayMission) => {
+		const q = queue.pending(key(m.id));
+		return q ? (q.body as { status: string }).status === 'done' : m.done;
+	};
+
 	async function toggle(m: TodayMission) {
 		pending = m.id;
-		const res = await api('PATCH', `/api/missions/${m.id}`, { status: m.done ? 'todo' : 'done' });
+		const done = isDone(m);
+		const res = await api('PATCH', `/api/missions/${m.id}`, { status: done ? 'todo' : 'done' }, { queueKey: key(m.id) });
 		pending = null;
 		if (!res.ok) return notify(res.message);
-		if (!m.done) {
+		if (res.queued) return;
+		if (!done) {
 			const shown = { id: m.id, amount: XP_BY_RANK[m.rank] };
 			gained = shown;
 			setTimeout(() => {
@@ -52,8 +62,8 @@
 {:else}
 	<ul class="list">
 		{#each missions as m (m.id)}
-			<li class:done={m.done}>
-				<Checkbox checked={m.done} label={m.title} disabled={pending === m.id} onchange={() => toggle(m)} />
+			<li class:done={isDone(m)}>
+				<Checkbox checked={isDone(m)} label={m.title} disabled={pending === m.id} onchange={() => toggle(m)} />
 				<RankBadge rank={m.rank} />
 				<div class="text">
 					<span class="title">{m.title}</span>
@@ -61,6 +71,7 @@
 						{#if m.front}{m.front}{/if}{#if m.front && m.dueLabel}{' · '}{/if}{#if m.dueLabel}<span class:overdue={m.overdue}>{m.dueLabel}</span>{/if}
 					</span>
 					{#if m.testReview}<span class="meta question">{labels.today.testQuestion}</span>{/if}
+					{#if queue.pending(key(m.id))}<span class="meta waiting">{labels.queue.waiting}</span>{/if}
 				</div>
 				{#if gained?.id === m.id}<span class="gain" aria-live="polite">+{gained.amount}</span>{/if}
 			</li>
@@ -115,6 +126,10 @@
 	}
 	.question {
 		color: var(--parch-soft);
+		font-style: italic;
+	}
+	.waiting {
+		color: var(--gold);
 		font-style: italic;
 	}
 	.gain {

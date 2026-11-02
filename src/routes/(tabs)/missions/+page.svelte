@@ -2,6 +2,7 @@
 	import { goto, invalidateAll } from '$app/navigation';
 	import MissionCard from '$lib/components/missions/MissionCard.svelte';
 	import { api } from '$lib/client/api';
+	import { queue } from '$lib/client/queue.svelte';
 	import { labels } from '$lib/labels';
 	import { RANK_ORDER, XP_BY_RANK } from '$lib/rules';
 	import type { MissionView } from '$lib/server/mission-view';
@@ -31,11 +32,14 @@
 	);
 
 	async function toggle(m: MissionView) {
-		const res = await api('PATCH', `/api/missions/${m.id}`, { status: m.done ? 'todo' : 'done' });
+		const q = queue.pending(`mission-${m.id}`);
+		const done = q ? (q.body as { status: string }).status === 'done' : m.done;
+		const res = await api('PATCH', `/api/missions/${m.id}`, { status: done ? 'todo' : 'done' }, { queueKey: `mission-${m.id}` });
 		if (!res.ok) {
 			message = res.message;
 			return;
 		}
+		if (res.queued) return;
 		message = null;
 		if (!m.done) {
 			const shown = { id: m.id, amount: XP_BY_RANK[m.rank] };
@@ -85,7 +89,13 @@
 			<span class="overline">{labels.missions.rankGroup(g.rank)} · {g.items.length}</span>
 			<ul class="list">
 				{#each g.items as m (m.id)}
-					<MissionCard mission={m} ontoggle={toggle} gained={gained?.id === m.id ? gained.amount : null} />
+					{@const q = queue.pending(`mission-${m.id}`)}
+					<MissionCard
+						mission={q ? { ...m, done: (q.body as { status: string }).status === 'done' } : m}
+						waiting={!!q}
+						ontoggle={toggle}
+						gained={gained?.id === m.id ? gained.amount : null}
+					/>
 				{/each}
 			</ul>
 		</section>

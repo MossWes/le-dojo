@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { api } from '$lib/client/api';
+	import { queue } from '$lib/client/queue.svelte';
 	import { labels } from '$lib/labels';
 	import type { TodayData } from '$lib/server/today';
 
@@ -15,14 +16,25 @@
 	let note = $state('');
 	let confirmBackfill = $state(false);
 	let busy = $state(false);
+	const queued = $derived(queue.pending(`quest-${quest.id}-${day}`));
+	const shownStatus = $derived(queued ? (queued.body as { status: string }).status : quest.todayStatus);
 	const nf = new Intl.NumberFormat('fr-FR');
 	const num = (n: number) => nf.format(n).replace(/\u202f/g, '\u00a0');
 
 	async function setDay(status: 'held' | 'slip') {
 		busy = true;
-		const res = await api('PUT', `/api/quests/${quest.id}/days/${day}`, { status, note: status === 'slip' ? note : null });
+		const res = await api(
+			'PUT',
+			`/api/quests/${quest.id}/days/${day}`,
+			{ status, note: status === 'slip' ? note : null },
+			{ queueKey: `quest-${quest.id}-${day}` }
+		);
 		busy = false;
 		if (!res.ok) return notify(res.message);
+		if (res.queued) {
+			writingSlip = false;
+			return;
+		}
 		writingSlip = false;
 		note = '';
 		await onChanged();
@@ -55,8 +67,8 @@
 		</p>
 	{:else}
 	<div class="row">
-		<button type="button" class="btn secondary" class:selected={quest.todayStatus === 'held'} aria-pressed={quest.todayStatus === 'held'} disabled={busy} onclick={() => setDay('held')}>{labels.today.held}</button>
-		<button type="button" class="btn secondary" class:selected={quest.todayStatus === 'slip'} aria-pressed={quest.todayStatus === 'slip'} disabled={busy} onclick={() => (writingSlip = true)}>{labels.today.slip}</button>
+		<button type="button" class="btn secondary" class:selected={shownStatus === 'held'} aria-pressed={shownStatus === 'held'} disabled={busy} onclick={() => setDay('held')}>{labels.today.held}</button>
+		<button type="button" class="btn secondary" class:selected={shownStatus === 'slip'} aria-pressed={shownStatus === 'slip'} disabled={busy} onclick={() => (writingSlip = true)}>{labels.today.slip}</button>
 	</div>
 
 	{#if writingSlip}
@@ -68,6 +80,8 @@
 				<button type="button" class="btn secondary" onclick={() => (writingSlip = false)}>{labels.today.cancel}</button>
 			</div>
 		</div>
+	{:else if queued}
+		<p class="meta said">{labels.queue.waiting}</p>
 	{:else if quest.todayStatus === 'slip'}
 		<p class="meta said">{labels.today.slipDone}{#if quest.todayNote} — « {quest.todayNote} »{/if}</p>
 	{/if}
