@@ -4,7 +4,10 @@ declare global {
 		// interface Error {}
 		// interface Locals {}
 		// interface PageData {}
-		// interface PageState {}
+		interface PageState {
+			reading?: string;
+			situation?: string;
+		}
 		// interface Platform {}
 	}
 }

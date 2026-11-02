@@ -152,6 +152,33 @@ export const labels = {
 		of: (label: string) => `Bilan du ${label}`
 	},
 
+	library: {
+		title: 'Bibliothèque',
+		secours: 'Secours',
+		secoursHint: 'Ce que je traverse maintenant',
+		situations: {
+			colere: 'Colère',
+			doute: 'Doute',
+			fatigue: 'Fatigue',
+			'peur-echec': 'Peur d’échouer',
+			famille: 'Famille',
+			tentation: 'Tentation',
+			attente: 'Attente'
+		} as Record<string, string>,
+		livrets: 'Mes livrets',
+		ring: (n: number, name: string) => `Livret ${n} · ${name}`,
+		part: (n: number, title: string) => `Partie ${n} · ${title}`,
+		comingSoon: 'À venir',
+		readings: 'Lectures',
+		currentPhase: 'Phase en cours',
+		otherReading: 'Une autre',
+		close: 'Fermer',
+		eveningQuestion: 'Question du soir',
+		page: (n: number, total: number) => `Page ${n} / ${total}`,
+		loading: 'Ouverture du livret…',
+		loadError: 'Impossible d’ouvrir ce livret pour l’instant.'
+	},
+
 	oath: {
 		title: 'Mon serment',
 		said: 'Je l’ai dit',
