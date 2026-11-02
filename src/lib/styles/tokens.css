@@ -1,0 +1,37 @@
+/* Design tokens — the only place where colors, fonts and sizes are defined (annexe 3). */
+:root {
+	--ink: #15110d;
+	--ink-raised: #1e1813;
+	--ink-sunken: #0e0b08;
+	--ink-glow: #2a2119;
+	--parch: #ecdfc3;
+	--parch-soft: #c9b993;
+	--parch-bright: #f6ead0;
+	--dim: #9a8b6d;
+	--gold: #c8a25a;
+	--gold-bright: #f3dca6;
+	--red: #b3412e;
+	--red-wash: rgba(179, 65, 46, 0.16);
+	--red-line: rgba(179, 65, 46, 0.55);
+	--line: rgba(200, 162, 90, 0.35);
+	--line-soft: rgba(200, 162, 90, 0.18);
+	--ok: #8fa86a;
+
+	--medal-1: #dcb86c;
+	--medal-2: #a9843f;
+	--medal-3: #7a5d29;
+	--medal-ink: #1b150f;
+
+	--font-serif: 'Lora', Georgia, serif;
+	--size-body: 17px;
+	--size-small: 14px;
+	--size-title: 26px;
+	--size-overline: 11px;
+	--size-mantra: 20px;
+	--leading: 1.5;
+
+	--radius: 4px;
+	--gap: 16px;
+	--touch: 44px;
+	--duration: 150ms;
+}

@@ -1,0 +1,19 @@
+# Le Dojo — à lancer depuis /opt/le-dojo (annexe 5).
+# Aucun port publié : seul Traefik (déjà en place, réseau hôte) joint l'app.
+services:
+  app:
+    build: .
+    image: le-dojo:latest
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      ORIGIN: https://${DOJO_DOMAIN:?DOJO_DOMAIN manquant dans .env}
+    volumes:
+      - ./data:/app/data
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.dojo.rule=Host(`${DOJO_DOMAIN}`)
+      - traefik.http.routers.dojo.entrypoints=websecure
+      - traefik.http.routers.dojo.tls.certresolver=letsencrypt
+      - traefik.http.services.dojo.loadbalancer.server.port=3000
+  # Le service de sauvegarde quotidienne arrive à l'étape 8.
