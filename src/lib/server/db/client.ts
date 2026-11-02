@@ -9,6 +9,8 @@ export type Db = BetterSQLite3Database<typeof schema>;
 
 // Opens a SQLite file (or ':memory:') with safe defaults and applies pending migrations.
 export function openDatabase(path: string, migrationsFolder = './drizzle'): { db: Db; sqlite: Database.Database } {
+	// Database files are readable by their owner only.
+	process.umask(0o077);
 	if (path !== ':memory:') mkdirSync(dirname(path), { recursive: true });
 	const sqlite = new Database(path);
 	sqlite.pragma('journal_mode = WAL');
