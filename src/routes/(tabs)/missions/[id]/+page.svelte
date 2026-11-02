@@ -6,6 +6,8 @@
 	import { api } from '$lib/client/api';
 	import { labels } from '$lib/labels';
 	import { XP_BY_RANK } from '$lib/rules';
+	import { eventDay, googleCalendarUrl } from '$lib/calendar';
+	import { formatDayLong } from '$lib/dates';
 	import type { MissionView } from '$lib/server/mission-view';
 	import type { PageProps } from './$types';
 
@@ -129,6 +131,17 @@
 			</ul>
 		{/if}
 		<a class="btn secondary add-sub" href="/missions/nouvelle?parent={m.id}">{labels.missions.addSub}</a>
+	</section>
+{/if}
+
+{#if eventDay(m)}
+	<section class="section">
+		<span class="overline">{labels.missions.agenda}</span>
+		<p class="meta">{labels.missions.agendaDay(formatDayLong(eventDay(m)!))}</p>
+		<div class="actions">
+			<a class="btn secondary" href="/api/missions/{m.id}/ics" download data-sveltekit-reload>{labels.missions.agendaIcs}</a>
+			<a class="btn secondary" href={googleCalendarUrl(m)} target="_blank" rel="noopener noreferrer">{labels.missions.agendaGoogle}</a>
+		</div>
 	</section>
 {/if}
 

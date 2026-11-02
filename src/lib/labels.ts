@@ -115,7 +115,11 @@ export const labels = {
 		status: { todo: 'À faire', doing: 'En cours', done: 'Faite', dropped: 'Abandonnée', reserve: 'En réserve' },
 		subMissions: 'Sous-missions',
 		addSub: '+ Sous-mission',
-		parent: 'Mission principale'
+		parent: 'Mission principale',
+		agenda: 'Agenda',
+		agendaIcs: 'Ajouter à mon agenda (.ics)',
+		agendaGoogle: 'Ouvrir dans Google Agenda',
+		agendaDay: (label: string) => `Le ${label}, journée entière.`
 	},
 
 	quests: {
