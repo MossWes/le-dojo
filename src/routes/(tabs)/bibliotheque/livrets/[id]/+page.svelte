@@ -19,8 +19,12 @@
 				const pdfjs = await import('pdfjs-dist/legacy/build/pdf.mjs');
 				const worker = await import('pdfjs-dist/legacy/build/pdf.worker.min.mjs?url');
 				pdfjs.GlobalWorkerOptions.workerSrc = worker.default;
+				// Fetched by the page itself so the offline cache (service worker) is used.
+				const response = await fetch(`/livrets/${encodeURIComponent(data.id)}`);
+				if (!response.ok) throw new Error(`HTTP ${response.status}`);
+				const bytes = new Uint8Array(await response.arrayBuffer());
 				const doc = await pdfjs.getDocument({
-					url: `/livrets/${encodeURIComponent(data.id)}`,
+					data: bytes,
 					isEvalSupported: false,
 					useSystemFonts: false
 				}).promise;

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { pushState } from '$app/navigation';
+	import { preloadData, pushState } from '$app/navigation';
 	import { page } from '$app/state';
 	import { onMount } from 'svelte';
 	import AdinkraIcon from '$lib/components/AdinkraIcon.svelte';
@@ -44,7 +44,13 @@
 	// Download the booklets once so they open without network later.
 	onMount(() => {
 		if (!navigator.onLine || !('caches' in window)) return;
-		for (const ring of data.livrets) for (const p of ring.parts) fetch(`/livrets/${encodeURIComponent(p.id)}`).catch(() => {});
+		for (const ring of data.livrets)
+			for (const p of ring.parts) {
+				const id = encodeURIComponent(p.id);
+				fetch(`/livrets/${id}`).catch(() => {});
+				fetch(`/bibliotheque/livrets/${id}`).catch(() => {});
+				preloadData(`/bibliotheque/livrets/${id}`).catch(() => {});
+			}
 	});
 </script>
 

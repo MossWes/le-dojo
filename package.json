@@ -15,11 +15,13 @@
     "test": "vitest run",
     "db:generate": "drizzle-kit generate",
     "seed": "node scripts/build-cli.js && node build/cli/seed.js",
-    "import-readings": "node scripts/build-cli.js && node build/cli/import-readings.js"
+    "import-readings": "node scripts/build-cli.js && node build/cli/import-readings.js",
+    "create-user": "node scripts/build-cli.js && node build/cli/create-user.js"
   },
   "dependencies": {
     "@fontsource/lora": "5.3.0",
     "@lucide/svelte": "1.60.0",
+    "@node-rs/argon2": "2.0.2",
     "better-sqlite3": "13.0.3",
     "drizzle-orm": "0.45.4",
     "pdfjs-dist": "5.4.624"

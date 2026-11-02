@@ -179,6 +179,46 @@ export const labels = {
 		loadError: 'Impossible d’ouvrir ce livret pour l’instant.'
 	},
 
+	me: {
+		title: 'Moi',
+		progress: 'Ma progression',
+		xpTotal: (xp: string) => `${xp}${nb}XP`,
+		nextGrade: (name: string, xp: string) => `Prochain grade${nb}: ${name} à ${xp}${nb}XP`,
+		lastGrade: 'Dernier grade atteint.',
+		grades: 'La voie du sabre',
+		history: '30 derniers jours',
+		way: 'Ma Voie',
+		redLines: 'Mes lignes rouges',
+		reviews: 'Mes bilans',
+		settings: 'Réglages',
+		morningTime: 'Réveil (rituel du matin)',
+		morningUntil: 'Fin du mantra du matin',
+		morningMode: 'Le matin',
+		morningModes: { mantra_only: 'Mantra seul', full: 'Serment complet' },
+		eveningStart: 'Début du créneau du soir',
+		eveningEnd: 'Fin du créneau du soir',
+		voice: 'Voix',
+		voiceDefault: 'Voix française par défaut',
+		voiceNone: 'Aucune voix française trouvée sur cet appareil.',
+		voiceTest: 'Tester',
+		voiceSample: 'Je tiens ce qui est dans ma main. Je lâche le reste.',
+		rate: (r: string) => `Vitesse de lecture${nb}: ${r}`,
+		stepsGoal: 'Objectif de pas (V2)',
+		save: 'Enregistrer les réglages',
+		saved: 'Réglages enregistrés.',
+		data: 'Mes données',
+		export: 'Exporter toutes mes données (JSON)',
+		logout: 'Me déconnecter',
+		logoutConfirm: `Je me déconnecte de cet appareil${nb}?`,
+		credits: 'Crédits'
+	},
+
+	login: {
+		title: 'Connexion',
+		password: 'Mot de passe',
+		enter: 'Entrer'
+	},
+
 	oath: {
 		title: 'Mon serment',
 		said: 'Je l’ai dit',

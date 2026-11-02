@@ -328,3 +328,15 @@ export const seedLog = sqliteTable(
 	},
 	(t) => [primaryKey({ columns: [t.entity, t.slug] })]
 );
+
+// Login sessions. Only an HMAC of the cookie token is stored.
+export const sessions = sqliteTable(
+	'sessions',
+	{
+		id: text('id').primaryKey(),
+		userId: userId(),
+		expiresAt: text('expires_at').notNull(),
+		...timestamps
+	},
+	(t) => [index('sessions_user').on(t.userId)]
+);
