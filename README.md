@@ -43,6 +43,14 @@ Je les dépose dans `data/livrets/` sur le serveur : ils apparaissent dans la Bi
 - Phases et lectures : contenu géré par fichiers, mis à jour par `slug` à chaque import.
 - Le compte est créé sans mot de passe ; le mot de passe se définit avec la commande de l'étape 7.
 
+## V2
+- **Pas** : raccourci iPhone → `POST /api/integrations/steps` (jeton Bearer, créé dans Moi, stocké haché, 10 envois/heure). Guide : `docs/raccourci-pas.md`.
+- **Rappels** : Web Push (clés VAPID dans `.env`), rituel du matin et bilan du soir, jamais plus de deux par jour.
+- **File hors ligne** : les cases cochées sans réseau partent au retour du réseau.
+- **Revue du dimanche** : Moi → Ma revue du dimanche (aussi dans le bloc du soir le dimanche).
+- **Agenda** : fiche d'une mission datée → fichier `.ics` ou lien Google Agenda.
+- **Statistiques** : Moi → Mes statistiques.
+
 ## Organisation
 - `src/lib/styles/tokens.css` : **seul** fichier où sont définies couleurs, polices et tailles (un test le vérifie).
 - `src/lib/labels.ts` : tous les textes de l'interface, en français.
@@ -50,7 +58,7 @@ Je les dépose dans `data/livrets/` sur le serveur : ils apparaissent dans la Bi
 - `src/lib/rules.ts`, `src/lib/daily-reading.ts` : règles du jeu (fonctions pures, testées).
 - `src/lib/server/services/` : missions (verrou S), quêtes, rituels, XP.
 - `src/lib/server/db/` : schéma, connexion, migrations (`drizzle/`).
-- `src/cli/` : commandes `seed`, `import-readings`, `create-user`, `import-data`.
+- `src/cli/` : commandes `seed`, `import-readings`, `create-user`, `import-data`, `generate-vapid`.
 - `src/service-worker.ts` : lecture hors ligne (pages vues, lectures, livrets).
 - `scripts/make-icons.cjs` : régénère les icônes de l'app (outil de développement).
 - `assets/icons/` : symboles Adinkra (licence Apache 2.0), intégrés à l'app au build.
