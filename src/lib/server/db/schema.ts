@@ -58,6 +58,8 @@ export type UserSettings = {
 	timezone: 'Europe/Paris';
 	ritual_morning_time: string;
 	ritual_morning_mode: 'mantra_only' | 'full';
+	/** End of the morning mantra screen (optional, '08:00' by default). */
+	ritual_morning_until?: string;
 	ritual_evening_start: string;
 	ritual_evening_end: string;
 	voice_name: string | null;

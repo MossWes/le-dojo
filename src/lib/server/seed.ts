@@ -21,6 +21,7 @@ export const DEFAULT_SETTINGS: UserSettings = {
 	timezone: 'Europe/Paris',
 	ritual_morning_time: '03:30',
 	ritual_morning_mode: 'mantra_only',
+	ritual_morning_until: '08:00',
 	ritual_evening_start: '20:00',
 	ritual_evening_end: '22:30',
 	voice_name: null,

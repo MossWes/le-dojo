@@ -14,15 +14,20 @@ export type DailyReading<R> = {
 	count: number;
 };
 
-/**
- * @param skips how many times "Lecture suivante" was used today.
- */
-export function selectDailyReading<R extends ReadingLike>(
+export type Rotation<R> = {
+	list: R[];
+	phaseSlug: string;
+	phaseNeedsUpdate: boolean;
+	/** Index of the day's reading in `list`, before any "Lecture suivante". */
+	baseIndex: number;
+};
+
+/** The ordered readings of the day's phase and the day's position in it. */
+export function dailyRotation<R extends ReadingLike>(
 	day: Day,
 	phases: readonly PhaseLike[],
-	allReadings: readonly R[],
-	skips = 0
-): DailyReading<R> | null {
+	allReadings: readonly R[]
+): Rotation<R> | null {
 	const byPhase = (slug: string) =>
 		allReadings
 			.filter((r) => r.phaseSlug === slug && r.order !== null)
@@ -42,8 +47,23 @@ export function selectDailyReading<R extends ReadingLike>(
 	if (!phase) return null;
 
 	const list = byPhase(phase.slug);
+	const baseIndex = Math.max(0, daysBetween(phase.startDate, day)) % list.length;
+	return { list, phaseSlug: phase.slug, phaseNeedsUpdate, baseIndex };
+}
+
+/**
+ * @param skips how many times "Lecture suivante" was used today.
+ */
+export function selectDailyReading<R extends ReadingLike>(
+	day: Day,
+	phases: readonly PhaseLike[],
+	allReadings: readonly R[],
+	skips = 0
+): DailyReading<R> | null {
+	const rotation = dailyRotation(day, phases, allReadings);
+	if (!rotation) return null;
+	const { list, phaseSlug, phaseNeedsUpdate, baseIndex } = rotation;
 	const count = list.length;
-	const base = Math.max(0, daysBetween(phase.startDate, day));
-	const index = (((base + skips) % count) + count) % count;
-	return { reading: list[index]!, phaseSlug: phase.slug, phaseNeedsUpdate, index, count };
+	const index = (baseIndex + skips) % count;
+	return { reading: list[index]!, phaseSlug, phaseNeedsUpdate, index, count };
 }

@@ -74,6 +74,23 @@ export function formatDayLong(day: Day): string {
 	return longFormatter.format(new Date(toUtcMs(day)));
 }
 
+const shortFormatter = new Intl.DateTimeFormat('fr-FR', {
+	timeZone: 'UTC',
+	weekday: 'short',
+	day: 'numeric',
+	month: 'short'
+});
+
+/** 'ven. 13 nov.' */
+export function formatDayShort(day: Day): string {
+	return shortFormatter.format(new Date(toUtcMs(day)));
+}
+
+/** Paris day of an ISO timestamp. */
+export function dayOfIso(iso: string): Day {
+	return today(new Date(iso));
+}
+
 export function nowIso(now: Date = new Date()): string {
 	return now.toISOString();
 }
