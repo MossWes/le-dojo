@@ -1,0 +1,217 @@
+{
+  "missions": [
+    {
+      "slug": "rupture-conventionnelle",
+      "title": "Obtenir ma rupture conventionnelle, ou lancer le plan B1",
+      "rank": "S",
+      "front": "sortie-salariat",
+      "status": "todo",
+      "due_date": "2026-11-13",
+      "planned_date": null,
+      "notes": "Mon responsable porte ma demande à la RH. Relance le 13 novembre. Je ne signe rien sans la date de fin et le montant exact. Je vise une fin de contrat au 31 décembre."
+    },
+    {
+      "slug": "wash31-3-accords",
+      "title": "Décrocher 3 accords écrits de prospects Wash 31",
+      "rank": "A",
+      "front": "wash31",
+      "status": "todo",
+      "due_date": "2026-11-30",
+      "planned_date": null,
+      "notes": "10 prospects rencontrés ou appelés avec ma grille. Un accord écrit = nombre de véhicules, formule, prix. Ils servent aussi au dossier bancaire."
+    },
+    {
+      "slug": "cep-rendez-vous",
+      "title": "Prendre rendez-vous avec un conseiller en évolution professionnelle (mon-cep.org)",
+      "rank": "B",
+      "front": "sortie-salariat",
+      "status": "todo",
+      "due_date": "2026-11-06",
+      "planned_date": "2026-11-03",
+      "notes": "Gratuit, sans engagement. Si la RH refuse, mon plan B1 a déjà de l'avance."
+    },
+    {
+      "slug": "simuler-droits",
+      "title": "Simuler mes droits au chômage et l'ARCE sur le site de France Travail",
+      "rank": "B",
+      "front": "sortie-salariat",
+      "status": "todo",
+      "due_date": "2026-11-06",
+      "planned_date": "2026-11-03",
+      "notes": "Avant toute signature."
+    },
+    {
+      "slug": "grille-tarifaire",
+      "title": "Valider la grille tarifaire Wash 31",
+      "rank": "B",
+      "front": "wash31",
+      "status": "todo",
+      "due_date": "2026-11-20",
+      "planned_date": null,
+      "notes": ""
+    },
+    {
+      "slug": "expert-comptable",
+      "title": "Rencontrer un expert-comptable et choisir la structure de ma société",
+      "rank": "B",
+      "front": "sortie-salariat",
+      "status": "todo",
+      "due_date": "2026-11-30",
+      "planned_date": null,
+      "notes": "Mes questions : statut, sort de la micro de Le Flow, objet social, TVA, charges, coût annuel."
+    },
+    {
+      "slug": "repartition-13e-mois",
+      "title": "Décider à froid de la répartition de mon 13e mois",
+      "rank": "B",
+      "front": "foyer-finances",
+      "status": "todo",
+      "due_date": "2026-11-30",
+      "planned_date": null,
+      "notes": ""
+    },
+    {
+      "slug": "medecin-travail",
+      "title": "Demander un rendez-vous au médecin du travail (fatigue liée à la nuit)",
+      "rank": "C",
+      "front": "sortie-salariat",
+      "status": "todo",
+      "due_date": "2026-11-10",
+      "planned_date": null,
+      "notes": ""
+    },
+    {
+      "slug": "cv-preparateur",
+      "title": "Adapter mon CV pour les postes de préparateur de véhicules",
+      "rank": "C",
+      "front": "interim",
+      "status": "todo",
+      "due_date": "2026-11-15",
+      "planned_date": null,
+      "notes": ""
+    },
+    {
+      "slug": "agences-interim",
+      "title": "Appeler ou visiter les agences d'intérim de Castelnau-d'Estrétefonds",
+      "rank": "C",
+      "front": "interim",
+      "status": "todo",
+      "due_date": "2026-11-30",
+      "planned_date": null,
+      "notes": "myJob 82, Crit, Proman, Adecco, Interaction, puis les autres de ma liste."
+    },
+    {
+      "slug": "plateformes-convoyage",
+      "title": "Étudier STEP 20, Pop Valet, Hiflow et DriiveMe",
+      "rank": "C",
+      "front": "convoyage",
+      "status": "todo",
+      "due_date": "2026-11-30",
+      "planned_date": null,
+      "notes": "Rémunération, retours, assurance, franchises, délais de paiement."
+    },
+    {
+      "slug": "permis-casier",
+      "title": "Vérifier mon permis et mes points (ANTS) et demander mon casier judiciaire (bulletin n° 3)",
+      "rank": "C",
+      "front": "convoyage",
+      "status": "todo",
+      "due_date": "2026-11-20",
+      "planned_date": null,
+      "notes": ""
+    },
+    {
+      "slug": "prime-activite",
+      "title": "Simuler la prime d'activité sur le site de la CAF",
+      "rank": "C",
+      "front": "foyer-finances",
+      "status": "todo",
+      "due_date": "2026-11-15",
+      "planned_date": null,
+      "notes": ""
+    },
+    {
+      "slug": "notaire",
+      "title": "Poser mes questions au notaire sur la succession",
+      "rank": "C",
+      "front": "foyer-finances",
+      "status": "todo",
+      "due_date": "2026-11-15",
+      "planned_date": null,
+      "notes": ""
+    },
+    {
+      "slug": "enveloppes-novembre",
+      "title": "Tenir mes trois enveloppes pendant tout novembre",
+      "rank": "C",
+      "front": "foyer-finances",
+      "status": "todo",
+      "due_date": "2026-11-30",
+      "planned_date": null,
+      "notes": ""
+    },
+    {
+      "slug": "site-wash31",
+      "title": "Corriger le site Wash 31 après validation de la grille",
+      "rank": "C",
+      "front": "wash31",
+      "status": "todo",
+      "due_date": "2026-11-30",
+      "planned_date": null,
+      "notes": "Prix, prise 220 V à la place de « pas besoin d'électricité », place du BTP, horaires d'hiver."
+    },
+    {
+      "slug": "stock-le-flow",
+      "title": "Écouler le stock restant de Le Flow avant tout rachat",
+      "rank": "C",
+      "front": "le-flow",
+      "status": "todo",
+      "due_date": "2026-12-15",
+      "planned_date": null,
+      "notes": ""
+    },
+    {
+      "slug": "dojo-v1",
+      "title": "Construire Le Dojo V1 avec Claude Code",
+      "rank": "C",
+      "front": "corps-esprit",
+      "status": "todo",
+      "due_date": "2026-11-30",
+      "planned_date": null,
+      "notes": "Rang C : l'outil ne passe jamais avant mes missions S et A."
+    },
+    {
+      "slug": "relancer-le-flow",
+      "title": "Relancer Le Flow",
+      "rank": "B",
+      "front": "le-flow",
+      "status": "reserve",
+      "due_date": null,
+      "planned_date": null,
+      "notes": "",
+      "start_condition": "Quand ma société me rapporte mon plancher trois mois de suite."
+    },
+    {
+      "slug": "reprendre-mon-bureau",
+      "title": "Reprendre Mon Bureau",
+      "rank": "B",
+      "front": "mon-bureau",
+      "status": "reserve",
+      "due_date": null,
+      "planned_date": null,
+      "notes": "",
+      "start_condition": "Quand ma société me rapporte mon plancher trois mois de suite."
+    },
+    {
+      "slug": "reprendre-wesleyfit",
+      "title": "Reprendre WesleyFit",
+      "rank": "B",
+      "front": "wesleyfit",
+      "status": "reserve",
+      "due_date": null,
+      "planned_date": null,
+      "notes": "",
+      "start_condition": "Quand ma société me rapporte mon plancher trois mois de suite."
+    }
+  ]
+}

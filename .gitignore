@@ -1,0 +1,22 @@
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Données et sauvegardes
+data/
+backups/
+*.sqlite
+*.sqlite-*
+*.db
+
+# Build
+node_modules/
+.svelte-kit/
+build/
+dist/
+coverage/
+test-results/
+playwright-report/
+
+.DS_Store

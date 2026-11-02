@@ -1,0 +1,18 @@
+{
+  "phases": [
+    {
+      "slug": "negociation",
+      "name": "La négociation",
+      "start_date": "2026-11-02",
+      "end_date": "2026-11-15",
+      "description": "J'obtiens ma sortie ou je lance le plan B, sans rien signer à la légère."
+    },
+    {
+      "slug": "preparation",
+      "name": "La préparation",
+      "start_date": "2026-11-16",
+      "end_date": "2026-12-31",
+      "description": "Je prépare tout ce qui ne demande pas de SIRET. Lectures à venir : tant que la phase n'en a pas, l'app reprend celles de la phase précédente."
+    }
+  ]
+}

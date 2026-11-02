@@ -1,0 +1,32 @@
+{
+  "quests": [
+    {
+      "slug": "defi-100-jours",
+      "title": "Défi des 100 jours : sans alcool ni tabac",
+      "kind": "daily_hold",
+      "start_date": "2026-09-01",
+      "length_days": 100,
+      "xp_per_day": 10,
+      "milestones": [
+        {
+          "day": 30,
+          "xp": 50
+        },
+        {
+          "day": 50,
+          "xp": 75
+        },
+        {
+          "day": 75,
+          "xp": 100
+        },
+        {
+          "day": 100,
+          "xp": 300
+        }
+      ],
+      "status": "active",
+      "note": "Commencé avant l'app : proposer le rattrapage des jours passés à la première ouverture. Fin le 9 décembre 2026 (jour 100)."
+    }
+  ]
+}

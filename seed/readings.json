@@ -1,0 +1,365 @@
+{
+  "format_version": 1,
+  "readings": [
+    {
+      "slug": "neg-01-ce-qui-depend",
+      "group": "phase",
+      "phase_slug": "negociation",
+      "order": 1,
+      "situations": [
+        "attente",
+        "doute"
+      ],
+      "pillar": "stoicisme",
+      "source": "Épictète, Manuel, I (trad. Guyau)",
+      "quote": "Il y a des choses qui dépendent de nous ; il y en a d'autres qui n'en dépendent pas.",
+      "quote_kind": "citation",
+      "title": "Ce qui dépend de moi",
+      "body": "La réponse de la RH ne dépend pas de moi. Ma préparation, si : mes droits simulés, mon CV, ma liste d'agences, mon rendez-vous avec un conseiller. Je mets mon énergie là, et seulement là.",
+      "mantra": "Je tiens ce qui est dans ma main. Je lâche le reste.",
+      "action": "Je simule mes droits sur le site de France Travail.",
+      "evening_question": "Où ai-je mis mon énergie aujourd'hui : dans ce qui dépend de moi, ou ailleurs ?",
+      "symbol": "nkyinkyim"
+    },
+    {
+      "slug": "neg-02-preparer-terrain",
+      "group": "phase",
+      "phase_slug": "negociation",
+      "order": 2,
+      "situations": [
+        "attente"
+      ],
+      "pillar": "sun-tzu",
+      "source": "D'après Sun Tzu, L'Art de la guerre, IV",
+      "quote": null,
+      "quote_kind": "reformulation",
+      "title": "Préparer le terrain, puis attendre l'occasion",
+      "body": "Le bon stratège se rend d'abord invincible, puis il attend que l'occasion se présente. J'ai posé mes arguments, mon responsable porte ma demande. Je ne force pas la porte : je prépare le plan B.",
+      "mantra": "J'ai semé. Je prépare. J'attends sans m'agiter.",
+      "action": "Je prends rendez-vous avec un conseiller en évolution professionnelle.",
+      "evening_question": "Quel geste utile ai-je fait aujourd'hui ?",
+      "symbol": "mframadan"
+    },
+    {
+      "slug": "neg-03-rien-inutile",
+      "group": "phase",
+      "phase_slug": "negociation",
+      "order": 3,
+      "situations": [
+        "doute"
+      ],
+      "pillar": "musashi",
+      "source": "D'après Musashi, Le Livre des cinq anneaux, Livre de la Terre",
+      "quote": null,
+      "quote_kind": "reformulation",
+      "title": "Ne rien faire d'inutile",
+      "body": "Penser dix fois à la même décision ne la fait pas avancer. Un geste utile, si. Aujourd'hui, je choisis un seul geste concret pour mon plan B, et je le fais.",
+      "mantra": "Un geste utile vaut mieux que dix pensées.",
+      "action": "Je fais un geste utile pour mon plan B : CV, liste d'agences ou rendez-vous.",
+      "evening_question": "Quel geste utile ai-je fait aujourd'hui ?",
+      "symbol": "asase-ye-duru"
+    },
+    {
+      "slug": "neg-04-parole",
+      "group": "phase",
+      "phase_slug": "negociation",
+      "order": 4,
+      "situations": [],
+      "pillar": "tolteques",
+      "source": "D'après Don Miguel Ruiz, Les Quatre Accords toltèques, premier accord",
+      "quote": null,
+      "quote_kind": "reformulation",
+      "title": "Que ma parole soit impeccable",
+      "body": "Dans une négociation, je ne promets que ce que je peux tenir. Former mon remplaçant, partir proprement, respecter la date : je le dis seulement si je le ferai. Ma parole est ma meilleure monnaie d'échange.",
+      "mantra": "Je dis ce que je ferai. Je fais ce que j'ai dit.",
+      "action": "J'écris mes trois conditions : fin au 31 décembre, au moins l'indemnité légale, congés posés avant la fin.",
+      "evening_question": "Ai-je promis aujourd'hui quelque chose que je ne pourrai pas tenir ?",
+      "symbol": "sankofa-two"
+    },
+    {
+      "slug": "neg-05-suppositions",
+      "group": "phase",
+      "phase_slug": "negociation",
+      "order": 5,
+      "situations": [
+        "attente",
+        "doute"
+      ],
+      "pillar": "tolteques",
+      "source": "D'après Don Miguel Ruiz, Les Quatre Accords toltèques, troisième accord",
+      "quote": null,
+      "quote_kind": "reformulation",
+      "title": "Je ne fais pas de suppositions",
+      "body": "Le silence de la RH ne veut dire ni oui ni non. Je ne construis pas de scénario dans ma tête. Je sépare ce que je sais de ce que je suppose, et je pose la question au bon moment.",
+      "mantra": "Je vérifie avant de conclure.",
+      "action": "J'écris deux colonnes : ce que je sais, ce que je suppose.",
+      "evening_question": "Ai-je réagi à un fait, ou à une supposition ?",
+      "symbol": "sankofa-two"
+    },
+    {
+      "slug": "neg-06-connaitre",
+      "group": "phase",
+      "phase_slug": "negociation",
+      "order": 6,
+      "situations": [],
+      "pillar": "sun-tzu",
+      "source": "D'après Sun Tzu, L'Art de la guerre, III",
+      "quote": null,
+      "quote_kind": "reformulation",
+      "title": "Connaître l'autre et me connaître",
+      "body": "Mon employeur n'est pas un ennemi, mais je connais son intérêt : un départ propre, daté, sans conflit, pour un coût connu. Je connais le mien : partir au 31 décembre avec mon 13e mois complet. Je parle de son intérêt pour obtenir le mien.",
+      "mantra": "Je connais leur intérêt. Je connais le mien.",
+      "action": "Je relis mes arguments et mon calcul d'indemnité.",
+      "evening_question": "Ai-je parlé de leur intérêt, ou seulement du mien ?",
+      "symbol": "mframadan"
+    },
+    {
+      "slug": "neg-07-sentiment",
+      "group": "phase",
+      "phase_slug": "negociation",
+      "order": 7,
+      "situations": [
+        "colere"
+      ],
+      "pillar": "musashi",
+      "source": "D'après Musashi, Dokkōdō",
+      "quote": null,
+      "quote_kind": "reformulation",
+      "title": "Je ne me laisse pas guider par un sentiment passager",
+      "body": "Si la réponse est non, je ne démissionne pas sur un coup de tête. Un refus n'est pas une défaite : c'est une information. Mon plan B1 existe déjà, et je le déroule à froid.",
+      "mantra": "Un refus n'est pas une défaite. C'est une information.",
+      "action": "Je relis mon plan B1 : conseiller, Transitions Pro, mes 1 300 jours.",
+      "evening_question": "Ai-je laissé une émotion décider à ma place aujourd'hui ?",
+      "symbol": "asase-ye-duru"
+    },
+    {
+      "slug": "neg-08-preparer-pire",
+      "group": "phase",
+      "phase_slug": "negociation",
+      "order": 8,
+      "situations": [
+        "peur-echec"
+      ],
+      "pillar": "stoicisme",
+      "source": "D'après les stoïciens : préparer le pire",
+      "quote": null,
+      "quote_kind": "reformulation",
+      "title": "J'ai regardé le pire",
+      "body": "J'écris ce qui peut mal tourner et ce que je fais. Refus de la RH : plan B1. Date de fin repoussée : je pose mes congés avant. Indemnité au minimum : j'accepte, car le vrai gain, c'est de sortir en janvier. Ma peur devient un plan.",
+      "mantra": "J'ai regardé le pire. J'ai un plan pour chaque cas.",
+      "action": "J'écris mes trois cas difficiles et ma réponse à chacun.",
+      "evening_question": "Quelle peur ai-je transformée en plan aujourd'hui ?",
+      "symbol": "nkyinkyim"
+    },
+    {
+      "slug": "neg-09-mon-mieux",
+      "group": "phase",
+      "phase_slug": "negociation",
+      "order": 9,
+      "situations": [
+        "fatigue"
+      ],
+      "pillar": "tolteques",
+      "source": "D'après Don Miguel Ruiz, Les Quatre Accords toltèques, quatrième accord",
+      "quote": null,
+      "quote_kind": "reformulation",
+      "title": "Mon mieux change",
+      "body": "Je travaille encore de nuit. Les jours où je suis épuisé, mon mieux est plus petit, et ce n'est pas un échec. Me reposer fait partie de mon mieux : je ne produis rien de bon épuisé.",
+      "mantra": "Mon mieux d'aujourd'hui suffit.",
+      "action": "Ce soir, je me couche à l'heure, même si tout n'est pas fini.",
+      "evening_question": "Ai-je mesuré mon effort à mon état du jour, ou à mon idéal ?",
+      "symbol": "sankofa-two"
+    },
+    {
+      "slug": "neg-10-les-miens",
+      "group": "phase",
+      "phase_slug": "negociation",
+      "order": 10,
+      "situations": [
+        "famille"
+      ],
+      "pillar": "bushido",
+      "source": "Bushido : la loyauté",
+      "quote": null,
+      "quote_kind": "reformulation",
+      "title": "Les miens d'abord",
+      "body": "Tout ce que je négocie sert les miens. Je ne pars jamais sans revenu en place, et le virement du foyer passe en premier. Une bonne sortie est une sortie qui ne met personne en danger.",
+      "mantra": "Je ne pars pas sans filet. Les miens d'abord.",
+      "action": "Je vérifie que rien de ce que je m'apprête à signer ne met le budget du foyer en danger.",
+      "evening_question": "Mes choix d'aujourd'hui ont-ils protégé les miens ?",
+      "symbol": "hye-won-hye"
+    },
+    {
+      "slug": "neg-11-forger",
+      "group": "phase",
+      "phase_slug": "negociation",
+      "order": 11,
+      "situations": [
+        "tentation"
+      ],
+      "pillar": "musashi",
+      "source": "D'après Musashi, Le Livre des cinq anneaux, Livre de l'Eau",
+      "quote": null,
+      "quote_kind": "reformulation",
+      "title": "Mille jours pour forger",
+      "body": "Mon défi des 100 jours entre dans sa dernière ligne droite. Un jour tenu ne compte pas seul : c'est la répétition qui forge. Je ne cherche pas à tenir pour toujours, seulement aujourd'hui.",
+      "mantra": "Un jour de plus. Puis un autre.",
+      "action": "Je valide mon jour de défi dans l'app.",
+      "evening_question": "Ai-je tenu ma parole envers moi aujourd'hui ?",
+      "symbol": "asase-ye-duru"
+    },
+    {
+      "slug": "neg-12-obstacle",
+      "group": "phase",
+      "phase_slug": "negociation",
+      "order": 12,
+      "situations": [
+        "doute"
+      ],
+      "pillar": "stoicisme",
+      "source": "D'après les stoïciens : l'obstacle fait partie du chemin",
+      "quote": null,
+      "quote_kind": "reformulation",
+      "title": "L'obstacle fait partie du chemin",
+      "body": "On m'a dit que chez nous, les ruptures conventionnelles sont rares. C'est un obstacle, pas un mur. Il m'apprend à mieux préparer mon dossier et mon plan B. Il ne prouve pas que j'ai tort.",
+      "mantra": "L'obstacle fait partie du chemin.",
+      "action": "J'écris une chose que cet obstacle m'apprend.",
+      "evening_question": "Qu'est-ce qui m'a résisté aujourd'hui, et qu'est-ce que ça m'a appris ?",
+      "symbol": "nkyinkyim"
+    },
+    {
+      "slug": "sec-colere",
+      "group": "secours",
+      "phase_slug": null,
+      "order": null,
+      "situations": [
+        "colere"
+      ],
+      "pillar": "tolteques",
+      "source": "D'après Don Miguel Ruiz, deuxième accord, et mes règles de décision",
+      "quote": null,
+      "quote_kind": "reformulation",
+      "title": "Je ne prends rien personnellement",
+      "body": "Quand quelqu'un manque à sa parole, cela dit quelque chose de lui, pas de moi. Je m'arrête : je ne réponds pas, je ne décide pas, je ne promets rien. Je m'isole quelques minutes, puis je bouge. Ensuite seulement, je trie : est-ce que ça dépend de moi ?",
+      "mantra": "Je m'arrête. Je ne décide pas sous la colère.",
+      "action": "Je sors marcher dix minutes avant de répondre à quoi que ce soit.",
+      "evening_question": "Ai-je gardé le contrôle de mes actes aujourd'hui ?",
+      "symbol": "sankofa-two"
+    },
+    {
+      "slug": "sec-doute",
+      "group": "secours",
+      "phase_slug": null,
+      "order": null,
+      "situations": [
+        "doute"
+      ],
+      "pillar": "sun-tzu",
+      "source": "D'après Sun Tzu, L'Art de la guerre, IV",
+      "quote": null,
+      "quote_kind": "reformulation",
+      "title": "Gagner d'abord, combattre ensuite",
+      "body": "Le doute ne dit pas que je suis faible. Il me signale qu'un point n'est pas encore préparé. Je cherche lequel, je le prépare, puis je décide.",
+      "mantra": "Je ne doute pas de moi. Je cherche ce qui n'est pas prêt.",
+      "action": "Je relis ma liste « Quand j'hésite » et je trouve la case vide.",
+      "evening_question": "Quelle case vide ai-je remplie aujourd'hui ?",
+      "symbol": "mframadan"
+    },
+    {
+      "slug": "sec-fatigue",
+      "group": "secours",
+      "phase_slug": null,
+      "order": null,
+      "situations": [
+        "fatigue"
+      ],
+      "pillar": "tolteques",
+      "source": "D'après Don Miguel Ruiz, quatrième accord",
+      "quote": null,
+      "quote_kind": "reformulation",
+      "title": "Me reposer fait partie de mon mieux",
+      "body": "Je suis épuisé. Aujourd'hui, mon mieux est plus petit, et c'est normal. Je choisis une seule mission, la plus utile. Le reste attend demain, sans culpabilité.",
+      "mantra": "Me reposer fait partie de mon mieux.",
+      "action": "Je garde une seule mission pour aujourd'hui et je planifie les autres pour plus tard.",
+      "evening_question": "Ai-je respecté mon état du jour ?",
+      "symbol": "sankofa-two"
+    },
+    {
+      "slug": "sec-peur-echec",
+      "group": "secours",
+      "phase_slug": null,
+      "order": null,
+      "situations": [
+        "peur-echec"
+      ],
+      "pillar": "stoicisme",
+      "source": "D'après les stoïciens : préparer le pire",
+      "quote": null,
+      "quote_kind": "reformulation",
+      "title": "Ma peur protège les miens",
+      "body": "Ma peur d'échouer vient de mon premier principe : ne pas mettre les miens en danger. Je ne la chasse pas, je la mets au travail. J'écris le pire réaliste et ma réponse. Une peur avec un plan n'est plus une menace.",
+      "mantra": "Ma peur protège les miens. Mon plan aussi.",
+      "action": "J'écris le pire scénario réaliste et ce que je ferais.",
+      "evening_question": "Quelle peur ai-je mise au travail aujourd'hui ?",
+      "symbol": "nkyinkyim"
+    },
+    {
+      "slug": "sec-famille",
+      "group": "secours",
+      "phase_slug": null,
+      "order": null,
+      "situations": [
+        "famille",
+        "colere"
+      ],
+      "pillar": "musashi",
+      "source": "D'après Musashi, Dokkōdō",
+      "quote": null,
+      "quote_kind": "reformulation",
+      "title": "Je ne nourris pas le ressentiment",
+      "body": "Une tension à la maison. Je ne réponds pas à chaud : je ne fais pas de mal aux gens que j'aime. Je reviens quand je suis calme, et je pose la question au lieu de supposer.",
+      "mantra": "Je reviens calme. Je pose la question.",
+      "action": "Je prends un moment seul, puis je reviens parler avec une question, pas un reproche.",
+      "evening_question": "Ai-je protégé les miens, y compris de ma colère ?",
+      "symbol": "asase-ye-duru"
+    },
+    {
+      "slug": "sec-tentation",
+      "group": "secours",
+      "phase_slug": null,
+      "order": null,
+      "situations": [
+        "tentation"
+      ],
+      "pillar": "musashi",
+      "source": "D'après Musashi, Dokkōdō",
+      "quote": null,
+      "quote_kind": "reformulation",
+      "title": "Je ne cherche pas le confort pour lui-même",
+      "body": "L'envie monte, et elle passera. Je n'ai pas à tenir pour toujours, seulement aujourd'hui. Je regarde le compteur de mon défi. Et si je tombe, je le note sans honte, et je reprends demain.",
+      "mantra": "Pas aujourd'hui. Aujourd'hui, je tiens.",
+      "action": "Je sors marcher dix minutes, je bois un grand verre d'eau, et j'écris à mon groupe du défi.",
+      "evening_question": "Ai-je tenu, et sinon, l'ai-je noté sans me juger ?",
+      "symbol": "asase-ye-duru"
+    },
+    {
+      "slug": "sec-attente",
+      "group": "secours",
+      "phase_slug": null,
+      "order": null,
+      "situations": [
+        "attente"
+      ],
+      "pillar": "sun-tzu",
+      "source": "D'après Sun Tzu, L'Art de la guerre, IV",
+      "quote": null,
+      "quote_kind": "reformulation",
+      "title": "Attendre sans m'agiter",
+      "body": "J'attends une réponse qui ne dépend pas de moi. L'attente n'est pas du temps perdu : c'est le moment de renforcer ce qui dépend de moi.",
+      "mantra": "J'ai semé. Je prépare. J'attends sans m'agiter.",
+      "action": "J'avance une mission de rang C qui ne dépend de personne.",
+      "evening_question": "Qu'ai-je renforcé pendant que j'attendais ?",
+      "symbol": "mframadan"
+    }
+  ]
+}

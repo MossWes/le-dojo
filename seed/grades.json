@@ -1,0 +1,65 @@
+{
+  "grades": [
+    {
+      "name": "Aspirant",
+      "min_xp": 0
+    },
+    {
+      "name": "Ashigaru",
+      "min_xp": 300
+    },
+    {
+      "name": "Rōnin",
+      "min_xp": 1000
+    },
+    {
+      "name": "Samouraï",
+      "min_xp": 3000
+    },
+    {
+      "name": "Hatamoto",
+      "min_xp": 7000
+    },
+    {
+      "name": "Maître d'armes",
+      "min_xp": 12000
+    },
+    {
+      "name": "Kensei",
+      "min_xp": 20000
+    }
+  ],
+  "xp_by_rank": {
+    "S": 500,
+    "A": 150,
+    "B": 50,
+    "C": 25,
+    "D": 10
+  },
+  "xp_rituals": {
+    "reading": 10,
+    "oath": 10,
+    "evening_review": 10
+  },
+  "quest_defaults": {
+    "xp_per_day": 10,
+    "milestones": [
+      {
+        "day": 30,
+        "xp": 50
+      },
+      {
+        "day": 50,
+        "xp": 75
+      },
+      {
+        "day": 75,
+        "xp": 100
+      },
+      {
+        "day": 100,
+        "xp": 300
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "voie": "Je mène les miens vers la liberté sans jamais les mettre en danger, en me battant d'abord contre qui j'étais hier.",
+  "oath": [
+    "Ma Voie : je mène les miens vers la liberté sans jamais les mettre en danger, en me battant d'abord contre qui j'étais hier.",
+    "Aujourd'hui, je n'abandonne pas les miens.",
+    "Aujourd'hui, je suis la meilleure version de moi-même que mon état permet.",
+    "Aujourd'hui, je tiens ma parole, envers eux et envers moi.",
+    "Aujourd'hui, je ne fais de mal à personne que j'aime.",
+    "Aujourd'hui, je refuse l'injustice, et je ne la commets pas.",
+    "Je ne contrôle que mes actes. Je choisis les deux gestes utiles de ma journée.",
+    "Je ne cherche pas la perfection. Mon mieux d'aujourd'hui suffit."
+  ],
+  "red_lines": [
+    "Je n'abandonne pas les miens.",
+    "Je suis la meilleure version de moi-même.",
+    "Je tiens ma parole.",
+    "Je ne fais pas de mal aux gens que j'aime.",
+    "Je refuse l'injustice."
+  ],
+  "evening_review": {
+    "questions": [
+      "Qu'ai-je bien fait aujourd'hui ?",
+      "Où ai-je manqué à un principe ? Qu'est-ce que je corrige demain ?",
+      "Ai-je gardé ma parole, envers les autres et envers moi ?"
+    ],
+    "footer": "Sans me juger, comme un comptable honnête."
+  }
+}

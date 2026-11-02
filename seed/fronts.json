@@ -1,0 +1,67 @@
+{
+  "fronts": [
+    {
+      "slug": "sortie-salariat",
+      "name": "Sortie du salariat",
+      "status": "active",
+      "sort_order": 1,
+      "description": "Quitter le travail de nuit proprement : rupture conventionnelle ou plan B1, droits, structure."
+    },
+    {
+      "slug": "wash31",
+      "name": "Wash 31",
+      "status": "active",
+      "sort_order": 2,
+      "description": "Lavage de véhicules d'entreprise sur site, Nord toulousain."
+    },
+    {
+      "slug": "convoyage",
+      "name": "Convoyage",
+      "status": "active",
+      "sort_order": 3,
+      "description": "Convoyage de véhicules à mon compte, plateformes puis clients directs."
+    },
+    {
+      "slug": "interim",
+      "name": "Intérim",
+      "status": "active",
+      "sort_order": 4,
+      "description": "Missions de préparateur de véhicules : revenu de base et apprentissage du métier."
+    },
+    {
+      "slug": "foyer-finances",
+      "name": "Foyer et finances",
+      "status": "active",
+      "sort_order": 5,
+      "description": "Budget, enveloppes, engagements envers le foyer."
+    },
+    {
+      "slug": "corps-esprit",
+      "name": "Corps et esprit",
+      "status": "active",
+      "sort_order": 6,
+      "description": "Sport, défi des 100 jours, énergie, Le Dojo."
+    },
+    {
+      "slug": "le-flow",
+      "name": "Le Flow",
+      "status": "reserve",
+      "sort_order": 7,
+      "description": "Boutique en ligne, en attente."
+    },
+    {
+      "slug": "mon-bureau",
+      "name": "Mon Bureau",
+      "status": "reserve",
+      "sort_order": 8,
+      "description": "Logiciel de gestion pour petites entreprises, en attente."
+    },
+    {
+      "slug": "wesleyfit",
+      "name": "WesleyFit",
+      "status": "reserve",
+      "sort_order": 9,
+      "description": "Programme sportif et contenu, en attente."
+    }
+  ]
+}
