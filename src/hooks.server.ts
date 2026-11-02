@@ -1,4 +1,4 @@
-import { json, type Handle } from '@sveltejs/kit';
+import { json, type Handle, type HandleServerError } from '@sveltejs/kit';
 import { getDb } from '$lib/server/db';
 import { SESSION_COOKIE, deleteExpiredSessions, validateSession } from '$lib/server/auth-core';
 import { securityHeaders } from '$lib/server/security';
@@ -40,4 +40,9 @@ export const handle: Handle = async ({ event, resolve }) => {
 	// Personal data: never stored by shared caches.
 	if (!response.headers.has('cache-control')) response.headers.set('cache-control', 'private, no-cache');
 	return response;
+};
+
+export const handleError: HandleServerError = ({ error, status }) => {
+	if (status !== 404) console.error(error);
+	return { message: status === 404 ? 'Cette page n’existe pas.' : 'Erreur inattendue.' };
 };

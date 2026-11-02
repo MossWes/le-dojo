@@ -235,6 +235,9 @@ export const labels = {
 
 	errors: {
 		offline: 'Pas de réseau. Je peux lire, mais pas enregistrer pour l’instant.',
-		generic: 'Ça n’a pas marché. Je réessaie dans un instant.'
+		generic: 'Ça n’a pas marché. Je réessaie dans un instant.',
+		notFound: 'Cette page n’existe pas.',
+		unexpected: 'Quelque chose s’est mal passé. Je réessaie dans un instant.',
+		backToday: 'Revenir à Aujourd’hui'
 	}
 } as const;
