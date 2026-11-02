@@ -35,12 +35,18 @@ const PERSONAL = {
 export function exportAll(db: Db, userId: number) {
 	const user = db.select().from(users).where(eq(users.id, userId)).get();
 	if (!user) throw new Error('Compte introuvable.');
-	const personal = Object.fromEntries(
-		Object.entries(PERSONAL).map(([name, table]) => [
-			name,
-			db.select().from(table).where(eq(table.userId, userId)).orderBy(table.id).all()
-		])
-	);
+	const mine = <T extends (typeof PERSONAL)[keyof typeof PERSONAL]>(table: T) =>
+		db.select().from(table).where(eq(table.userId, userId)).orderBy(table.id).all() as T['$inferSelect'][];
+	const personal = {
+		fronts: mine(fronts),
+		missions: mine(missions),
+		quests: mine(quests),
+		quest_logs: mine(questLogs),
+		xp_events: mine(xpEvents),
+		reading_views: mine(readingViews),
+		evening_reviews: mine(eveningReviews),
+		oath_logs: mine(oathLogs)
+	};
 	return {
 		format: EXPORT_FORMAT,
 		version: EXPORT_VERSION,
