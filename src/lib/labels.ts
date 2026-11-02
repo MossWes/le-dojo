@@ -269,6 +269,20 @@ export const labels = {
 		days: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']
 	},
 
+	stats: {
+		title: 'Mes statistiques',
+		regularity: 'Régularité · 30 derniers jours',
+		regularitySummary: (days: number, total: number, rate: number) =>
+			`Au moins un rituel ${days} jour${days > 1 ? 's' : ''} sur ${total} · ${Math.round(rate * 100)}${nb}% des rituels faits`,
+		heldLegend: 'Point : défi tenu ce jour-là',
+		levels: ['Aucun rituel', '1 rituel', '2 rituels', '3 rituels'],
+		byFront: 'Missions par front',
+		counts: (done: number, open: number) => `${done} faite${done > 1 ? 's' : ''} · ${open} en cours`,
+		curve: 'Courbe d’expérience',
+		empty: 'Pas encore de données.',
+		doneRecent: (n: number) => `${n} mission${n > 1 ? 's' : ''} faite${n > 1 ? 's' : ''} ces 30 derniers jours.`
+	},
+
 	queue: {
 		waiting: 'En attente du réseau',
 		offline: 'Pas de réseau. Je peux lire ; mes cases cochées partiront au retour du réseau.',

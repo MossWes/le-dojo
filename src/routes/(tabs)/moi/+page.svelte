@@ -108,6 +108,7 @@
 	<div class="stack">
 		<a class="btn secondary" href="/moi/bilans">{labels.review.history}</a>
 		<a class="btn secondary" href="/moi/revue">{labels.week.title}</a>
+		<a class="btn secondary" href="/moi/statistiques">{labels.stats.title}</a>
 	</div>
 </section>
 
