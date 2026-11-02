@@ -1,7 +1,7 @@
 import { json, type RequestEvent } from '@sveltejs/kit';
 import { MISSION_STATUSES, RANKS } from './db/schema';
 import { ValidationError } from './services/errors';
-import type { MissionInput, MissionPatch } from './services/missions';
+import { MISSION_VIEWS, type MissionFilters, type MissionInput, type MissionPatch } from './services/missions';
 
 type BusinessError = Error & { status: number; code: string; activeTitle?: string; field?: string };
 const isBusinessError = (e: unknown): e is BusinessError =>
@@ -97,4 +97,16 @@ export function parseMissionInput(body: Record<string, unknown>): MissionInput {
 	if (!patch.title) throw new ValidationError('title', 'Le titre est obligatoire.');
 	if (!patch.rank) throw new ValidationError('rank', 'Le rang est obligatoire.');
 	return { ...patch, title: patch.title, rank: patch.rank, source: 'manual' };
+}
+
+/** Reads ?view=&rank=&front= (unknown values are ignored, not errors). */
+export function parseMissionFilters(params: URLSearchParams): MissionFilters {
+	const view = params.get('view') ?? params.get('status');
+	const rank = params.get('rank');
+	const front = Number(params.get('front'));
+	return {
+		view: MISSION_VIEWS.find((v) => v === view),
+		rank: RANKS.find((r) => r === rank),
+		frontId: Number.isInteger(front) && front > 0 ? front : undefined
+	};
 }

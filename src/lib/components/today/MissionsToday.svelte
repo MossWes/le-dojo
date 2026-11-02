@@ -58,7 +58,7 @@
 				<div class="text">
 					<span class="title">{m.title}</span>
 					<span class="meta">
-						{#if m.front}{m.front}{/if}{#if m.front && m.dueLabel} · {/if}{#if m.dueLabel}<span class:overdue={m.overdue}>{m.dueLabel}</span>{/if}
+						{#if m.front}{m.front}{/if}{#if m.front && m.dueLabel}{' · '}{/if}{#if m.dueLabel}<span class:overdue={m.overdue}>{m.dueLabel}</span>{/if}
 					</span>
 					{#if m.testReview}<span class="meta question">{labels.today.testQuestion}</span>{/if}
 				</div>

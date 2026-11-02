@@ -102,7 +102,7 @@
 	</div>
 
 	<p class="meta foot">
-		{data.position} / {data.count}{#if data.phaseNeedsUpdate} · {labels.today.phaseToUpdate}{/if}
+		{data.position} / {data.count}{#if data.phaseNeedsUpdate}{' · '}{labels.today.phaseToUpdate}{/if}
 	</p>
 </article>
 

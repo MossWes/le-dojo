@@ -1,6 +1,7 @@
 // Everything the "Aujourd'hui" screen needs, in one call (GET /api/today).
 import { and, eq, inArray, isNull } from 'drizzle-orm';
-import { dayOfIso, formatDayLong, formatDayShort, timeOfDay, today, type Day } from '../dates';
+import { dayOfIso, formatDayLong, timeOfDay, today } from '../dates';
+import { missionView, type MissionView } from './mission-view';
 import { compareRanks } from '../rules';
 import type { Db } from './db/client';
 import { fronts, missions, questLogs, quests, users, xpEvents, type Ritual, type UserSettings } from './db/schema';
@@ -11,18 +12,7 @@ import { questState } from './services/quests';
 import { readingOfDay } from './services/readings';
 import { progress } from './services/xp';
 
-export type TodayMission = {
-	id: number;
-	title: string;
-	rank: Mission['rank'];
-	status: Mission['status'];
-	done: boolean;
-	front: string | null;
-	dueDate: Day | null;
-	dueLabel: string | null;
-	overdue: boolean;
-	testReview: boolean;
-};
+export type TodayMission = MissionView;
 
 export function userSettings(db: Db, userId: number): UserSettings {
 	const user = db.select({ settings: users.settings }).from(users).where(eq(users.id, userId)).get();
@@ -40,18 +30,7 @@ export function buildToday(db: Db, userId: number, now: Date = new Date()) {
 	);
 	const all = db.select().from(missions).where(eq(missions.userId, userId)).all();
 
-	const toView = (m: Mission): TodayMission => ({
-		id: m.id,
-		title: m.title,
-		rank: m.rank,
-		status: m.status,
-		done: m.status === 'done',
-		front: m.frontId ? (frontNames.get(m.frontId) ?? null) : null,
-		dueDate: m.dueDate,
-		dueLabel: m.dueDate ? formatDayShort(m.dueDate) : null,
-		overdue: !!m.dueDate && m.dueDate < day && m.status !== 'done',
-		testReview: m.isTest && m.reviewDate === day
-	});
+	const toView = (m: Mission): TodayMission => missionView(m, day, frontNames);
 
 	const active = (m: Mission) => m.status === 'todo' || m.status === 'doing';
 	const sMission = all.find((m) => m.rank === 'S' && active(m)) ?? null;

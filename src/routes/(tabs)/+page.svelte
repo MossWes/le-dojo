@@ -83,7 +83,7 @@
 {/if}
 
 {#if t.sMission}
-	<a class="s-banner" href="/missions">
+	<a class="s-banner" href="/missions/{t.sMission.id}">
 		<RankBadge rank="S" />
 		<span class="s-text">
 			<span class="overline s-label">{labels.today.missionS}</span>

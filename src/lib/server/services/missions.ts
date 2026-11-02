@@ -5,6 +5,7 @@ import type { Db } from '../db/client';
 import {
 	MISSION_STATUSES,
 	RANKS,
+	fronts,
 	missions,
 	xpEvents,
 	type MissionStatus,
@@ -53,6 +54,14 @@ function validate(tx: Tx, userId: number, m: MissionInput & { id?: number }): vo
 		);
 	if (m.isTest && !m.reviewDate)
 		throw new ValidationError('reviewDate', 'Un test a besoin de sa date de bilan.');
+	if (m.frontId != null) {
+		const front = tx
+			.select({ id: fronts.id })
+			.from(fronts)
+			.where(and(eq(fronts.id, m.frontId), eq(fronts.userId, userId)))
+			.get();
+		if (!front) throw new ValidationError('frontId', 'Front introuvable.');
+	}
 	if (m.parentId != null) {
 		if (m.parentId === m.id)
 			throw new ValidationError('parentId', 'Une mission ne peut pas être sa propre sous-mission.');
@@ -64,6 +73,11 @@ function validate(tx: Tx, userId: number, m: MissionInput & { id?: number }): vo
 		if (!parent) throw new ValidationError('parentId', 'Mission parente introuvable.');
 		if (parent.parentId !== null)
 			throw new ValidationError('parentId', 'Les sous-missions ne vont que sur un niveau.');
+		if (m.id !== undefined) {
+			const child = tx.select({ id: missions.id }).from(missions).where(eq(missions.parentId, m.id)).get();
+			if (child)
+				throw new ValidationError('parentId', 'Cette mission a déjà des sous-missions.');
+		}
 	}
 }
 
@@ -190,4 +204,62 @@ export function deleteMission(db: Db, userId: number, id: number): void {
 		.where(and(eq(missions.id, id), eq(missions.userId, userId)))
 		.run();
 	if (result.changes === 0) throw new NotFoundError('Mission');
+}
+
+export const MISSION_VIEWS = ['todo', 'reserve', 'tests', 'done'] as const;
+export type MissionView = (typeof MISSION_VIEWS)[number];
+
+export type MissionFilters = {
+	view?: MissionView;
+	rank?: Rank;
+	frontId?: number;
+};
+
+/** Missions for the Missions screen, sorted by rank (S first), then due date. */
+export function listMissions(db: Db, userId: number, filters: MissionFilters = {}): Mission[] {
+	const view = filters.view ?? 'todo';
+	const all = db.select().from(missions).where(eq(missions.userId, userId)).all();
+	const inView = (m: Mission) => {
+		switch (view) {
+			case 'todo':
+				return m.status === 'todo' || m.status === 'doing';
+			case 'reserve':
+				return m.status === 'reserve';
+			case 'tests':
+				return m.isTest && m.status !== 'done' && m.status !== 'dropped';
+			case 'done':
+				return m.status === 'done' || m.status === 'dropped';
+		}
+	};
+	return all
+		.filter(inView)
+		.filter((m) => !filters.rank || m.rank === filters.rank)
+		.filter((m) => !filters.frontId || m.frontId === filters.frontId)
+		.sort(
+			(a, b) =>
+				RANKS.indexOf(a.rank) - RANKS.indexOf(b.rank) ||
+				(view === 'done'
+					? (b.doneAt ?? '').localeCompare(a.doneAt ?? '')
+					: (a.dueDate ?? '9999').localeCompare(b.dueDate ?? '9999')) ||
+				a.id - b.id
+		);
+}
+
+export function getMission(db: Db, userId: number, id: number): Mission {
+	const m = db
+		.select()
+		.from(missions)
+		.where(and(eq(missions.id, id), eq(missions.userId, userId)))
+		.get();
+	if (!m) throw new NotFoundError('Mission');
+	return m;
+}
+
+export function subMissions(db: Db, userId: number, parentId: number): Mission[] {
+	return db
+		.select()
+		.from(missions)
+		.where(and(eq(missions.userId, userId), eq(missions.parentId, parentId)))
+		.all()
+		.sort((a, b) => RANKS.indexOf(a.rank) - RANKS.indexOf(b.rank) || a.id - b.id);
 }

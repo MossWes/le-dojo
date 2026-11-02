@@ -8,6 +8,7 @@
 
 html {
 	-webkit-text-size-adjust: 100%;
+	overflow-x: hidden;
 	color-scheme: dark;
 }
 
@@ -155,4 +156,36 @@ textarea:focus,
 	overflow: hidden;
 	clip-path: inset(50%);
 	white-space: nowrap;
+}
+
+select,
+input[type='date'] {
+	min-height: var(--touch);
+	padding: 8px 12px;
+	background: var(--ink-sunken);
+	color: var(--parch);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	font: inherit;
+	font-size: var(--size-body);
+	color-scheme: dark;
+	max-width: 100%;
+}
+select {
+	width: 100%;
+}
+select:focus,
+input[type='date']:focus {
+	outline: 2px solid var(--gold-bright);
+	outline-offset: 1px;
+}
+
+.field {
+	display: grid;
+	gap: 6px;
+}
+.field > label,
+.field > .label {
+	font-size: var(--size-small);
+	color: var(--parch-soft);
 }

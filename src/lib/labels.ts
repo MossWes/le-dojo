@@ -63,6 +63,57 @@ export const labels = {
 		xpOf: 'XP'
 	},
 
+	missions: {
+		title: 'Mes missions',
+		views: { todo: 'À faire', reserve: 'En réserve', tests: 'Tests', done: 'Faites' },
+		allRanks: 'Tous',
+		allFronts: 'Tous les fronts',
+		rankGroup: (rank: string) => `Rang ${rank}`,
+		empty: 'Aucune mission ici.',
+		newMission: '+ Mission',
+		newTitle: 'Nouvelle mission',
+		newSub: 'Nouvelle sous-mission',
+		subOf: (title: string) => `Sous-mission de ${nb}« ${title}${nb}»`,
+		dropped: 'Abandonnée',
+		reserveCondition: (c: string) => `Condition de départ${nb}: ${c}`,
+		review: (label: string) => `Bilan${nb}: ${label}`,
+		testBadge: 'Test',
+		fields: {
+			title: 'Titre',
+			rank: 'Rang',
+			front: 'Front',
+			noFront: 'Aucun front',
+			frontReserve: (name: string) => `${name} (en réserve)`,
+			dueDate: 'Échéance',
+			plannedDate: 'Jour prévu',
+			notes: 'Notes',
+			isTest: 'C’est un test (une voie testée à petit coût)',
+			reviewDate: 'Date de bilan',
+			startCondition: 'Condition de départ'
+		},
+		clearDate: 'Effacer',
+		save: 'Enregistrer',
+		saved: 'Enregistré.',
+		create: 'Créer la mission',
+		actions: {
+			done: 'Faite',
+			undo: 'À refaire',
+			reserve: 'En réserve',
+			reserveConfirm: 'Mettre en réserve',
+			resume: 'Reprendre',
+			drop: 'Abandonner',
+			dropConfirm: `J’abandonne cette mission${nb}? Je ne perds aucune expérience.`,
+			delete: 'Supprimer',
+			deleteConfirm: `Je supprime définitivement cette mission${nb}?`,
+			deleteSubs: (n: number) => (n === 1 ? ' Sa sous-mission sera supprimée aussi.' : ` Ses ${n} sous-missions seront supprimées aussi.`)
+		},
+		doneGain: (xp: number) => `Faite. +${xp}${nb}XP`,
+		status: { todo: 'À faire', doing: 'En cours', done: 'Faite', dropped: 'Abandonnée', reserve: 'En réserve' },
+		subMissions: 'Sous-missions',
+		addSub: '+ Sous-mission',
+		parent: 'Mission principale'
+	},
+
 	oath: {
 		title: 'Mon serment',
 		said: 'Je l’ai dit',
