@@ -1,6 +1,6 @@
 // Everything the "Aujourd'hui" screen needs, in one call (GET /api/today).
 import { and, eq, inArray, isNull } from 'drizzle-orm';
-import { dayOfIso, formatDayLong, timeOfDay, today } from '../dates';
+import { dayOfIso, formatDayLong, timeOfDay, today, weekday } from '../dates';
 import { missionView, type MissionView } from './mission-view';
 import { compareRanks } from '../rules';
 import type { Db } from './db/client';
@@ -105,6 +105,7 @@ export function buildToday(db: Db, userId: number, now: Date = new Date()) {
 		quests: questViews,
 		rituals,
 		isEvening: time >= settings.ritual_evening_start,
+		isSunday: weekday(day) === 6,
 		showMorning:
 			settings.ritual_morning_mode === 'mantra_only' &&
 			time >= settings.ritual_morning_time &&

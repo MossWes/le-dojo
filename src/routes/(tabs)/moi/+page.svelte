@@ -105,7 +105,10 @@
 
 <section class="section">
 	<span class="overline">{L.reviews}</span>
-	<a class="btn secondary" href="/moi/bilans">{labels.review.history}</a>
+	<div class="stack">
+		<a class="btn secondary" href="/moi/bilans">{labels.review.history}</a>
+		<a class="btn secondary" href="/moi/revue">{labels.week.title}</a>
+	</div>
 </section>
 
 <section class="section">

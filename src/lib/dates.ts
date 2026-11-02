@@ -91,6 +91,16 @@ export function dayOfIso(iso: string): Day {
 	return today(new Date(iso));
 }
 
+/** 0 = Monday … 6 = Sunday. */
+export function weekday(day: Day): number {
+	return (new Date(toUtcMs(day)).getUTCDay() + 6) % 7;
+}
+
+/** Monday of the week containing `day`. */
+export function weekStart(day: Day): Day {
+	return addDays(day, -weekday(day));
+}
+
 export function nowIso(now: Date = new Date()): string {
 	return now.toISOString();
 }

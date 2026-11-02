@@ -79,6 +79,7 @@
 			<a class="btn primary" href="/serment">{labels.today.myOath}</a>
 			<a class="btn secondary" href="/bilan">{labels.today.myReview}</a>
 		</div>
+		{#if t.isSunday}<a class="btn secondary sunday" href="/moi/revue">{labels.week.title}</a>{/if}
 	</section>
 {/if}
 
@@ -177,6 +178,10 @@
 	}
 	.row .btn {
 		flex: 1;
+	}
+	.sunday {
+		width: 100%;
+		margin-top: 10px;
 	}
 	.s-banner {
 		margin-top: var(--gap);

@@ -247,6 +247,24 @@ export const labels = {
 		notConfigured: 'Les rappels ne sont pas encore configurés sur le serveur (clés VAPID).'
 	},
 
+	week: {
+		title: 'Ma revue du dimanche',
+		range: (a: string, b: string) => `Du ${a} au ${b}`,
+		xp: 'Expérience gagnée',
+		xpKinds: { mission: 'Missions', ritual: 'Rituels', quest_day: 'Quêtes', quest_milestone: 'Paliers' } as Record<string, string>,
+		done: 'Missions accomplies',
+		noneDone: 'Aucune mission cochée cette semaine.',
+		slipped: 'Ce qui a glissé',
+		slippedHint: 'Je replanifie, je mets en réserve ou je laisse partir. Sans me juger.',
+		noneSlipped: 'Rien n’a glissé.',
+		plan: 'Mes missions de la semaine qui vient',
+		planDay: 'Jour prévu',
+		planButton: (n: number) => (n ? `Prévoir ${n} mission${n > 1 ? 's' : ''}` : 'Prévoir'),
+		planned: (n: number) => `${n} mission${n > 1 ? 's' : ''} prévue${n > 1 ? 's' : ''}.`,
+		already: 'déjà prévue',
+		days: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']
+	},
+
 	queue: {
 		waiting: 'En attente du réseau',
 		offline: 'Pas de réseau. Je peux lire ; mes cases cochées partiront au retour du réseau.',
