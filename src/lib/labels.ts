@@ -114,6 +114,44 @@ export const labels = {
 		parent: 'Mission principale'
 	},
 
+	quests: {
+		title: 'Mes quêtes',
+		active: 'En cours',
+		finished: 'Terminées',
+		none: 'Aucune quête.',
+		day: 'Jour',
+		of: (n: number | null) => (n ? `sur ${n}` : ''),
+		held: (n: number) => `${n} tenu${n > 1 ? 's' : ''}`,
+		slips: (n: number) => `${n} incartade${n > 1 ? 's' : ''}`,
+		milestones: 'Paliers',
+		milestone: (day: number, xp: number) => `Jour ${day} · +${xp}${nb}XP`,
+		calendar: 'Calendrier',
+		legend: { held: 'Tenu', slip: 'Incartade', empty: 'Sans réponse', future: 'À venir' },
+		ends: (label: string) => `Fin${nb}: ${label}`,
+		over: 'Quête terminée.',
+		editDay: (n: number, label: string) => `Jour ${n} · ${label}`,
+		close: 'Fermer'
+	},
+
+	review: {
+		title: 'Mon bilan du soir',
+		questionOfDay: 'La question de ma lecture',
+		q1: `Qu’ai-je bien fait aujourd’hui${nb}?`,
+		q2a: `Où ai-je manqué à un principe${nb}?`,
+		q2b: `Qu’est-ce que je corrige demain${nb}?`,
+		q3: `Ai-je gardé ma parole, envers les autres et envers moi${nb}?`,
+		keptWord: { oui: 'Oui', en_partie: 'En partie', non: 'Non' },
+		keptShort: (answer: string) => `Ma parole${nb}: ${answer}`,
+		energy: 'Mon énergie (facultatif)',
+		footer: 'Sans me juger, comme un comptable honnête.',
+		save: 'Enregistrer mon bilan',
+		saved: 'Bilan enregistré.',
+		history: 'Mes bilans',
+		none: 'Aucun bilan pour l’instant.',
+		edit: 'Modifier',
+		of: (label: string) => `Bilan du ${label}`
+	},
+
 	oath: {
 		title: 'Mon serment',
 		said: 'Je l’ai dit',

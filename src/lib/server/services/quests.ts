@@ -134,3 +134,43 @@ export function backfillQuest(db: Db, userId: number, questId: number, today: Da
 		return missingDays.length;
 	});
 }
+
+export type QuestCalendarDay = {
+	day: Day;
+	number: number;
+	status: 'held' | 'slip' | 'logged' | null;
+	note: string | null;
+	value: number | null;
+	isFuture: boolean;
+	isToday: boolean;
+};
+
+export type QuestOverview = Quest & {
+	state: QuestState;
+	calendar: QuestCalendarDay[];
+	finished: boolean;
+};
+
+/** Every quest with its state and a day-by-day calendar (shown up to today for endless quests). */
+export function questOverviews(db: Db, userId: number, today: Day): QuestOverview[] {
+	const all = db.select().from(quests).where(eq(quests.userId, userId)).all();
+	return all.map((q) => {
+		const logs = db.select().from(questLogs).where(eq(questLogs.questId, q.id)).all();
+		const byDay = new Map(logs.map((l) => [l.day, l]));
+		const state = questState(q, logs, today);
+		const last = state.endDay ?? (today > q.startDate ? today : q.startDate);
+		const calendar = dayRange(q.startDate, last).map((d, i) => {
+			const log = byDay.get(d);
+			return {
+				day: d,
+				number: i + 1,
+				status: log?.status ?? null,
+				note: log?.note ?? null,
+				value: log?.value ?? null,
+				isFuture: d > today,
+				isToday: d === today
+			};
+		});
+		return { ...q, state, calendar, finished: state.isOver || q.status !== 'active' };
+	});
+}
