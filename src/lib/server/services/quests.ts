@@ -1,6 +1,6 @@
 import { and, eq, isNull } from 'drizzle-orm';
 import { addDays, dayRange, isDay, nowIso, type Day } from '../../dates';
-import { milestoneOn, questDayNumber, questEndDay } from '../../rules';
+import { milestoneOn, QUEST_DEFAULTS, questDayNumber, questEndDay } from '../../rules';
 import type { Db } from '../db/client';
 import { questLogs, quests, xpEvents } from '../db/schema';
 import { NotFoundError, ValidationError } from './errors';
@@ -54,12 +54,13 @@ function writeDay(
 	tx: Tx,
 	quest: Quest,
 	day: Day,
-	status: 'held' | 'slip',
-	note: string | null
+	status: 'held' | 'slip' | 'logged',
+	note: string | null,
+	value: number | null = null
 ): void {
 	tx.insert(questLogs)
-		.values({ userId: quest.userId, questId: quest.id, day, status, note })
-		.onConflictDoUpdate({ target: [questLogs.questId, questLogs.day], set: { status, note } })
+		.values({ userId: quest.userId, questId: quest.id, day, status, note, value })
+		.onConflictDoUpdate({ target: [questLogs.questId, questLogs.day], set: { status, note, value } })
 		.run();
 
 	const dayEvent = and(
@@ -83,7 +84,7 @@ function writeDay(
 			.onConflictDoNothing()
 			.run();
 	} else {
-		// A slip earns nothing; it only cancels the "held" XP of that same day if it was set by mistake.
+		// A slip (or steps under the goal) earns nothing; it only cancels the "held" XP of that same day.
 		tx.update(xpEvents).set({ revokedAt: nowIso() }).where(dayEvent).run();
 	}
 
@@ -172,5 +173,52 @@ export function questOverviews(db: Db, userId: number, today: Day): QuestOvervie
 			};
 		});
 		return { ...q, state, calendar, finished: state.isOver || q.status !== 'active' };
+	});
+}
+
+export const STEPS_QUEST_SLUG = 'pas-quotidiens';
+
+/** The "daily steps" quest, created the first time steps arrive. */
+export function ensureStepsQuest(db: Db, userId: number, day: Day): Quest {
+	const existing = db
+		.select()
+		.from(quests)
+		.where(and(eq(quests.userId, userId), eq(quests.slug, STEPS_QUEST_SLUG)))
+		.get();
+	if (existing) return existing;
+	return db
+		.insert(quests)
+		.values({
+			userId,
+			slug: STEPS_QUEST_SLUG,
+			title: 'Mes pas quotidiens',
+			kind: 'daily_steps',
+			startDate: day,
+			lengthDays: null,
+			milestones: QUEST_DEFAULTS.milestones,
+			xpPerDay: QUEST_DEFAULTS.xp_per_day
+		})
+		.returning()
+		.get();
+}
+
+/** Steps sent by the shortcut: "held" if the goal is reached, otherwise "logged" (no XP, no reproach). */
+export function logSteps(
+	db: Db,
+	userId: number,
+	day: Day,
+	steps: number,
+	goal: number,
+	today: Day
+): { dayNumber: number; status: 'held' | 'logged' } {
+	if (!isDay(day) || day > today || day < addDays(today, -7))
+		throw new ValidationError('date', 'Date attendue : aujourd’hui ou l’un des 7 derniers jours (AAAA-MM-JJ).');
+	if (!Number.isInteger(steps) || steps < 0 || steps > 200_000)
+		throw new ValidationError('steps', 'Nombre de pas invalide.');
+	return db.transaction((tx) => {
+		const quest = ensureStepsQuest(db, userId, day < today ? day : today);
+		const status = steps >= goal ? 'held' : 'logged';
+		writeDay(tx, quest, day, status, null, steps);
+		return { dayNumber: questDayNumber(quest.startDate, day), status };
 	});
 }

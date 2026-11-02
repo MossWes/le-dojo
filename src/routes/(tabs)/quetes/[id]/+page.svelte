@@ -79,7 +79,7 @@
 
 {#if message}<p class="notice" role="alert">{message}</p>{/if}
 
-{#if q.state.missingDays.length > 0 && !q.finished}
+{#if q.state.missingDays.length > 0 && !q.finished && q.kind !== 'daily_steps'}
 	<div class="card backfill">
 		<p class="meta">{labels.today.missing(q.state.missingDays.length)}</p>
 		{#if confirmBackfill}
@@ -120,6 +120,9 @@
 {#if sel}
 	<div class="card editor">
 		<p class="overline">{L.editDay(sel.number, sel.label)}</p>
+		{#if q.kind === 'daily_steps'}
+			<p>{sel.value !== null ? `${sel.value.toLocaleString('fr-FR')} pas` : L.legend.empty}</p>
+		{:else}
 		<div class="row">
 			<button type="button" class="btn secondary" class:selected={sel.status === 'held'} disabled={busy} onclick={() => setDay('held')}>{labels.today.held}</button>
 			<button type="button" class="btn secondary" class:selected={sel.status === 'slip'} disabled={busy} onclick={() => setDay('slip')}>{labels.today.slip}</button>
@@ -127,6 +130,7 @@
 		<label class="visually-hidden" for="day-note">{labels.today.slipNote}</label>
 		<textarea id="day-note" rows="2" bind:value={note} placeholder={labels.today.slipNote}></textarea>
 		{#if info}<p class="meta" role="status">{info}</p>{/if}
+		{/if}
 		<button type="button" class="btn link" onclick={() => (selected = null)}>{L.close}</button>
 	</div>
 {/if}

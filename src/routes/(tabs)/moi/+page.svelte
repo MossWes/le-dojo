@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 	import AdinkraIcon from '$lib/components/AdinkraIcon.svelte';
 	import Separator from '$lib/components/Separator.svelte';
+	import StepsToken from '$lib/components/me/StepsToken.svelte';
 	import { api } from '$lib/client/api';
 	import { speech } from '$lib/client/speech.svelte';
 	import { labels } from '$lib/labels';
@@ -143,6 +144,11 @@
 		{#if info}<p class="notice" role="status">{info}</p>{/if}
 		<button type="submit" class="btn primary" disabled={busy}>{L.save}</button>
 	</form>
+</section>
+
+<section class="section">
+	<span class="overline">{L.stepsToken}</span>
+	<StepsToken status={data.stepsToken} origin={data.origin} />
 </section>
 
 <section class="section">

@@ -5,9 +5,10 @@ import { currentUserId } from '$lib/server/auth';
 import { getDb } from '$lib/server/db';
 import { progress, xpHistory } from '$lib/server/services/xp';
 import { userSettings } from '$lib/server/today';
+import { stepsTokenStatus } from '$lib/server/services/steps-token';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = () => {
+export const load: PageServerLoad = ({ url }) => {
 	const db = getDb();
 	const userId = currentUserId();
 	return {
@@ -16,6 +17,8 @@ export const load: PageServerLoad = () => {
 		history: xpHistory(db, userId, today()),
 		way: serment.voie,
 		redLines: serment.red_lines,
-		settings: userSettings(db, userId)
+		settings: userSettings(db, userId),
+		stepsToken: stepsTokenStatus(db, userId),
+		origin: url.origin
 	};
 };

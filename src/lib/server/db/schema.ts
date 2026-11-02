@@ -340,3 +340,18 @@ export const sessions = sqliteTable(
 	},
 	(t) => [index('sessions_user').on(t.userId)]
 );
+
+// V2 — token for the iPhone steps shortcut. Only an HMAC of the token is stored.
+export const apiTokens = sqliteTable(
+	'api_tokens',
+	{
+		id,
+		userId: userId(),
+		scope: text('scope', { enum: ['steps'] }).notNull(),
+		tokenHash: text('token_hash').notNull().unique(),
+		lastUsedAt: text('last_used_at'),
+		revokedAt: text('revoked_at'),
+		...timestamps
+	},
+	(t) => [index('api_tokens_user_scope').on(t.userId, t.scope)]
+);

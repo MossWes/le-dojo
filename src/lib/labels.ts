@@ -53,6 +53,10 @@ export const labels = {
 		backfillConfirm: (n: number) => `Je marque ${n === 1 ? 'ce jour' : `ces ${n} jours`} comme tenus${nb}?`,
 		yes: 'Oui',
 		no: 'Non',
+		steps: (value: string, goal: string) => `${value} pas sur ${goal}`,
+		stepsWaiting: (goal: string) => `En attente du raccourci du soir · objectif ${goal} pas`,
+		stepsHeld: 'Objectif atteint.',
+		stepsLogged: 'Noté.',
 		myRituals: 'Mes rituels',
 		rituals: { reading: 'Lecture', oath: 'Serment', evening_review: 'Bilan' },
 		evening: 'Le soir',
@@ -210,7 +214,19 @@ export const labels = {
 		export: 'Exporter toutes mes données (JSON)',
 		logout: 'Me déconnecter',
 		logoutConfirm: `Je me déconnecte de cet appareil${nb}?`,
-		credits: 'Crédits'
+		credits: 'Crédits',
+		stepsToken: 'Raccourci des pas (iPhone)',
+		stepsTokenNone: 'Aucun jeton actif.',
+		stepsTokenActive: (created: string, used: string | null) =>
+			`Jeton actif depuis le ${created}${used ? `, dernier envoi le ${used}` : ', jamais utilisé'}.`,
+		stepsTokenCreate: 'Créer un jeton pour les pas',
+		stepsTokenRenew: 'Remplacer le jeton',
+		stepsTokenRevoke: 'Révoquer',
+		stepsTokenRevokeConfirm: `Je révoque ce jeton${nb}? Le raccourci cessera d’envoyer mes pas.`,
+		stepsTokenShown: 'Je le copie maintenant dans mon raccourci : il ne sera plus jamais affiché.',
+		stepsTokenCopy: 'Copier',
+		stepsTokenCopied: 'Copié.',
+		stepsUrl: (origin: string) => `Adresse du raccourci${nb}: ${origin}/api/integrations/steps`
 	},
 
 	login: {

@@ -68,6 +68,9 @@ export function buildToday(db: Db, userId: number, now: Date = new Date()) {
 			return {
 				id: q.id,
 				title: q.title,
+				kind: q.kind,
+				todayValue: todayLog?.value ?? null,
+				stepsGoal: settings.steps_goal,
 				lengthDays: q.lengthDays,
 				dayNumber: state.dayNumber,
 				isOver: state.isOver,

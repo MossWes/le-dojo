@@ -35,6 +35,11 @@ function sessionSecret(): string {
 
 const tokenId = (token: string) => createHmac('sha256', sessionSecret()).update(token).digest('hex');
 
+/** HMAC of a secret token (sessions, API tokens): the token itself is never stored. */
+export const hashToken = tokenId;
+
+export const newToken = (prefix = '') => prefix + randomBytes(32).toString('base64url');
+
 export function createSession(db: Db, userId: number, now = new Date()): { token: string; expires: Date } {
 	const token = randomBytes(32).toString('base64url');
 	const expires = new Date(now.getTime() + SESSION_DAYS * DAY_MS);

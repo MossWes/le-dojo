@@ -14,6 +14,7 @@ export const load: PageServerLoad = ({ params }) => {
 		quest: {
 			id: quest.id,
 			title: quest.title,
+			kind: quest.kind,
 			lengthDays: quest.lengthDays,
 			milestones: quest.milestones,
 			state: quest.state,

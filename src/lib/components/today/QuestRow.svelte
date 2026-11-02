@@ -15,6 +15,8 @@
 	let note = $state('');
 	let confirmBackfill = $state(false);
 	let busy = $state(false);
+	const nf = new Intl.NumberFormat('fr-FR');
+	const num = (n: number) => nf.format(n).replace(/\u202f/g, '\u00a0');
 
 	async function setDay(status: 'held' | 'slip') {
 		busy = true;
@@ -42,6 +44,16 @@
 		<span class="day">{labels.today.dayOf(quest.dayNumber, quest.lengthDays)}</span>
 	</div>
 
+	{#if quest.kind === 'daily_steps'}
+		<p class="meta steps">
+			{#if quest.todayValue !== null}
+				{labels.today.steps(num(quest.todayValue), num(quest.stepsGoal))} ·
+				{quest.todayStatus === 'held' ? labels.today.stepsHeld : labels.today.stepsLogged}
+			{:else}
+				{labels.today.stepsWaiting(num(quest.stepsGoal))}
+			{/if}
+		</p>
+	{:else}
 	<div class="row">
 		<button type="button" class="btn secondary" class:selected={quest.todayStatus === 'held'} aria-pressed={quest.todayStatus === 'held'} disabled={busy} onclick={() => setDay('held')}>{labels.today.held}</button>
 		<button type="button" class="btn secondary" class:selected={quest.todayStatus === 'slip'} aria-pressed={quest.todayStatus === 'slip'} disabled={busy} onclick={() => (writingSlip = true)}>{labels.today.slip}</button>
@@ -59,8 +71,9 @@
 	{:else if quest.todayStatus === 'slip'}
 		<p class="meta said">{labels.today.slipDone}{#if quest.todayNote} — « {quest.todayNote} »{/if}</p>
 	{/if}
+	{/if}
 
-	{#if quest.missingDays > 0}
+	{#if quest.missingDays > 0 && quest.kind !== 'daily_steps'}
 		<div class="missing">
 			<p class="meta">{labels.today.missing(quest.missingDays)}</p>
 			{#if confirmBackfill}
