@@ -6,6 +6,7 @@ import { getDb } from '$lib/server/db';
 import { progress, xpHistory } from '$lib/server/services/xp';
 import { userSettings } from '$lib/server/today';
 import { stepsTokenStatus } from '$lib/server/services/steps-token';
+import { subscriptionCount, vapidPublicKey } from '$lib/server/push';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = ({ url }) => {
@@ -19,6 +20,7 @@ export const load: PageServerLoad = ({ url }) => {
 		redLines: serment.red_lines,
 		settings: userSettings(db, userId),
 		stepsToken: stepsTokenStatus(db, userId),
-		origin: url.origin
+		origin: url.origin,
+		push: { publicKey: vapidPublicKey(), devices: subscriptionCount(db, userId) }
 	};
 };

@@ -4,6 +4,8 @@
 	import AdinkraIcon from '$lib/components/AdinkraIcon.svelte';
 	import Separator from '$lib/components/Separator.svelte';
 	import StepsToken from '$lib/components/me/StepsToken.svelte';
+	import Reminders from '$lib/components/me/Reminders.svelte';
+	import Checkbox from '$lib/components/Checkbox.svelte';
 	import { api } from '$lib/client/api';
 	import { speech } from '$lib/client/speech.svelte';
 	import { labels } from '$lib/labels';
@@ -17,7 +19,12 @@
 	const maxDay = $derived(Math.max(10, ...data.history.map((h) => h.xp)));
 
 	// svelte-ignore state_referenced_locally
-	let s = $state({ ...data.settings, ritual_morning_until: data.settings.ritual_morning_until ?? '08:00' });
+	let s = $state({
+		...data.settings,
+		ritual_morning_until: data.settings.ritual_morning_until ?? '08:00',
+		notify_morning: data.settings.notify_morning ?? false,
+		notify_evening: data.settings.notify_evening ?? false
+	});
 	let voices = $state<{ name: string; lang: string }[]>([]);
 	let message = $state<string | null>(null);
 	let info = $state<string | null>(null);
@@ -137,6 +144,11 @@
 			<button type="button" class="btn secondary" onclick={() => speech.speak('settings-test', L.voiceSample, { name: s.voice_name, rate: s.voice_rate })}>{L.voiceTest}</button>
 		</div>
 		<div class="field">
+			<span class="label">{labels.reminders.title}</span>
+			<div class="check"><Checkbox checked={s.notify_morning} label={labels.reminders.morning} onchange={() => (s.notify_morning = !s.notify_morning)} /><span>{labels.reminders.morning}</span></div>
+			<div class="check"><Checkbox checked={s.notify_evening} label={labels.reminders.evening} onchange={() => (s.notify_evening = !s.notify_evening)} /><span>{labels.reminders.evening}</span></div>
+		</div>
+		<div class="field">
 			<label for="s-steps">{L.stepsGoal}</label>
 			<input id="s-steps" type="number" inputmode="numeric" min="500" max="100000" step="500" bind:value={s.steps_goal} />
 		</div>
@@ -144,6 +156,11 @@
 		{#if info}<p class="notice" role="status">{info}</p>{/if}
 		<button type="submit" class="btn primary" disabled={busy}>{L.save}</button>
 	</form>
+</section>
+
+<section class="section">
+	<span class="overline">{labels.reminders.title}</span>
+	<Reminders publicKey={data.push.publicKey} devices={data.push.devices} />
 </section>
 
 <section class="section">
@@ -285,6 +302,14 @@
 		display: grid;
 		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 		gap: 8px;
+	}
+	.check {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding-left: 11px;
+		font-size: var(--size-small);
+		color: var(--parch-soft);
 	}
 	.stack {
 		display: grid;

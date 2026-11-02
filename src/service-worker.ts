@@ -79,3 +79,40 @@ sw.addEventListener('fetch', (event) => {
 		})()
 	);
 });
+
+// V2 — reminders (Web Push).
+sw.addEventListener('push', (event) => {
+	let data = { title: 'Le Dojo', body: '', url: '/' };
+	try {
+		data = { ...data, ...(event.data?.json() ?? {}) };
+	} catch {
+		/* keep defaults */
+	}
+	event.waitUntil(
+		sw.registration.showNotification(data.title, {
+			body: data.body,
+			icon: '/icons/icon-192.png',
+			badge: '/icons/icon-192.png',
+			data: { url: data.url },
+			silent: true
+		})
+	);
+});
+
+sw.addEventListener('notificationclick', (event) => {
+	event.notification.close();
+	const url = new URL((event.notification.data?.url as string) ?? '/', sw.location.origin).href;
+	event.waitUntil(
+		(async () => {
+			const windows = await sw.clients.matchAll({ type: 'window', includeUncontrolled: true });
+			for (const w of windows) {
+				if ('focus' in w) {
+					await w.focus();
+					await w.navigate(url).catch(() => {});
+					return;
+				}
+			}
+			await sw.clients.openWindow(url);
+		})()
+	);
+});

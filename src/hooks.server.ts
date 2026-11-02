@@ -2,9 +2,11 @@ import { json, type Handle, type HandleServerError } from '@sveltejs/kit';
 import { getDb } from '$lib/server/db';
 import { SESSION_COOKIE, deleteExpiredSessions, validateSession } from '$lib/server/auth-core';
 import { securityHeaders } from '$lib/server/security';
+import { startReminderScheduler } from '$lib/server/push';
 
 // Open the database (and run migrations) at startup, not on the first request.
 deleteExpiredSessions(getDb());
+startReminderScheduler(getDb());
 
 // Everything needs a session, except these.
 const PUBLIC = new Set(['/login', '/api/auth/login', '/api/health', '/api/integrations/steps']);

@@ -36,6 +36,11 @@ export function updateSettings(db: Db, userId: number, body: Record<string, unkn
 			throw new ValidationError('steps_goal', 'Objectif entre 500 et 100 000 pas.');
 		next.steps_goal = g as number;
 	}
+	for (const key of ['notify_morning', 'notify_evening'] as const) {
+		if (body[key] === undefined) continue;
+		if (typeof body[key] !== 'boolean') throw new ValidationError(key, 'Oui ou non attendu.');
+		next[key] = body[key] as boolean;
+	}
 	if (next.ritual_evening_end <= next.ritual_evening_start)
 		throw new ValidationError('ritual_evening_end', 'La fin du créneau du soir doit suivre son début.');
 	if ((next.ritual_morning_until ?? '08:00') <= next.ritual_morning_time)

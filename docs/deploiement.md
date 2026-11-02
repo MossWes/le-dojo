@@ -133,6 +133,25 @@ docker compose exec -T app node build/cli/import-data.js - < le-dojo-export-AAAA
 docker compose exec app node build/cli/create-user.js
 ```
 
+## 10. V2 — Rappels (notifications)
+
+Une seule fois, sur le serveur :
+
+```bash
+cd /opt/le-dojo
+docker compose run --rm --no-deps app node build/cli/generate-vapid.js
+nano .env          # je colle les 3 lignes VAPID_… (et mon adresse dans VAPID_SUBJECT)
+docker compose up -d
+```
+
+Puis sur l'iPhone, **depuis l'icône de l'écran d'accueil** (iOS 16.4 ou plus) :
+Moi → Rappels → « Activer les rappels sur cet appareil » → Autoriser.
+Je coche les rappels voulus dans Réglages, j'enregistre, et j'envoie un rappel de test.
+
+## 11. V2 — Mes pas
+
+Voir `docs/raccourci-pas.md`.
+
 ## En cas de souci
 
 | Ce que je vois | Ce que je fais |

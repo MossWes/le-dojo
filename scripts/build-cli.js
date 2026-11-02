@@ -2,7 +2,7 @@
 import { build } from 'esbuild';
 
 await build({
-	entryPoints: ['src/cli/seed.ts', 'src/cli/import-readings.ts', 'src/cli/create-user.ts', 'src/cli/import-data.ts'],
+	entryPoints: ['src/cli/seed.ts', 'src/cli/import-readings.ts', 'src/cli/create-user.ts', 'src/cli/import-data.ts', 'src/cli/generate-vapid.ts'],
 	outdir: 'build/cli',
 	bundle: true,
 	platform: 'node',

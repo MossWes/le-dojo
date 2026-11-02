@@ -229,6 +229,24 @@ export const labels = {
 		stepsUrl: (origin: string) => `Adresse du raccourci${nb}: ${origin}/api/integrations/steps`
 	},
 
+	reminders: {
+		title: 'Rappels',
+		morning: 'Rappel du rituel du matin (à l’heure du réveil)',
+		evening: 'Rappel du bilan du soir (début du créneau, seulement s’il n’est pas fait)',
+		rule: 'Jamais plus de deux rappels par jour.',
+		enable: 'Activer les rappels sur cet appareil',
+		disable: 'Désactiver sur cet appareil',
+		test: 'Envoyer un rappel de test',
+		testSent: 'Rappel envoyé.',
+		testNone: 'Aucun appareil n’a reçu le rappel.',
+		on: (n: number) => `Rappels actifs sur cet appareil${n > 1 ? ` (${n} appareils au total)` : ''}.`,
+		failed: 'Activation impossible pour l’instant.',
+		denied: 'Les notifications sont refusées pour le Dojo : je les autorise dans les Réglages de l’iPhone.',
+		installFirst: 'Les rappels marchent quand le Dojo est ajouté à l’écran d’accueil (iOS 16.4 ou plus récent).',
+		unsupported: 'Cet appareil ne gère pas les rappels.',
+		notConfigured: 'Les rappels ne sont pas encore configurés sur le serveur (clés VAPID).'
+	},
+
 	login: {
 		title: 'Connexion',
 		password: 'Mot de passe',

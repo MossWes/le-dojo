@@ -26,7 +26,9 @@ export const DEFAULT_SETTINGS: UserSettings = {
 	ritual_evening_end: '22:30',
 	voice_name: null,
 	voice_rate: 0.95,
-	steps_goal: 8000
+	steps_goal: 8000,
+	notify_morning: false,
+	notify_evening: false
 };
 
 export type SeedReport = Record<string, { created: number; updated: number; kept: number }>;

@@ -65,6 +65,9 @@ export type UserSettings = {
 	voice_name: string | null;
 	voice_rate: number;
 	steps_goal: number;
+	/** V2 reminders (Web Push), off until I turn them on. */
+	notify_morning?: boolean;
+	notify_evening?: boolean;
 };
 
 export type Milestone = { day: number; xp: number };
@@ -354,4 +357,26 @@ export const apiTokens = sqliteTable(
 		...timestamps
 	},
 	(t) => [index('api_tokens_user_scope').on(t.userId, t.scope)]
+);
+
+// V2 — Web Push subscriptions (one per device) and the log of reminders sent.
+export const pushSubscriptions = sqliteTable('push_subscriptions', {
+	id,
+	userId: userId(),
+	endpoint: text('endpoint').notNull().unique(),
+	p256dh: text('p256dh').notNull(),
+	auth: text('auth').notNull(),
+	...timestamps
+});
+
+export const pushLog = sqliteTable(
+	'push_log',
+	{
+		id,
+		userId: userId(),
+		day: text('day').notNull(),
+		kind: text('kind', { enum: ['morning', 'evening'] }).notNull(),
+		...timestamps
+	},
+	(t) => [uniqueIndex('push_log_user_day_kind').on(t.userId, t.day, t.kind)]
 );
