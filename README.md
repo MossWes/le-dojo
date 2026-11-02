@@ -56,6 +56,10 @@ Je les dépose dans `data/livrets/` sur le serveur : ils apparaissent dans la Bi
 - `assets/icons/` : symboles Adinkra (licence Apache 2.0), intégrés à l'app au build.
 
 ## Déploiement
-Voir `annexes/05-deploiement-vps.md` et `docs/00-etat-des-lieux.md`. La procédure complète (domaine, sauvegarde, restauration) sera écrite à l'étape 8.
+Procédure complète pas à pas : **`docs/deploiement.md`** (domaine, installation, iPhone, sauvegarde, restauration, mise à jour).
+
+- Sauvegarde : service `backup`, chaque nuit à 2 h (Paris), copie cohérente vérifiée, gardée 30 jours dans `backups/`.
+- Restauration : `sudo scripts/restore.sh backups/dojo-….sqlite.gz` (la base remplacée est gardée à part).
+- Mise à jour : `sudo scripts/update.sh`.
 
 Icônes Adinkra : Adinkra Icons, licence Apache 2.0 (`assets/icons/LICENSE-adinkra-icons`).

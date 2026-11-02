@@ -7,7 +7,13 @@ import type { RequestHandler } from './$types';
 const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 export const POST: RequestHandler = async ({ request, cookies, getClientAddress, url }) => {
-	const address = getClientAddress();
+	// Behind Traefik the address comes from X-Forwarded-For; never fail the login if it is missing.
+	let address = 'inconnue';
+	try {
+		address = getClientAddress();
+	} catch {
+		/* keep the shared bucket */
+	}
 	if (loginThrottle.isBlocked(address))
 		return json({ code: 'THROTTLED', message: 'Trop d’essais. Je réessaie dans quelques minutes.' }, { status: 429 });
 
