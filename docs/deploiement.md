@@ -9,6 +9,17 @@ Rien ici ne touche à Hermès, Ollama, Qdrant, au bot Telegram ni à la configur
 
 ## 1. Le domaine (une seule fois)
 
+**Choix actuel : adresse gratuite sslip.io, sans inscription ni réglage DNS.**
+`ledojo.76-13-60-29.sslip.io` pointe déjà vers le VPS : je passe directement à l'étape 2
+et je mets `DOJO_DOMAIN=ledojo.76-13-60-29.sslip.io` dans `.env`.
+
+Si le certificat HTTPS échoue (message « too many certificates » dans
+`docker logs traefik-traefik-1`, limite partagée par tous les utilisateurs de sslip.io),
+je passe sur un sous-domaine d'un domaine que je possède, comme ci-dessous,
+puis je change `DOJO_DOMAIN` dans `.env` et je relance `docker compose up -d`.
+
+**Variante : sous-domaine d'un domaine à moi.**
+
 Je choisis un sous-domaine, par exemple `dojo.mondomaine.fr`.
 Chez mon registraire (ou Hostinger), je crée un enregistrement **DNS de type A** :
 
